@@ -65,6 +65,8 @@
 </template>
 
 <script setup>
+const { pushTo } = useNavigation()
+
 const drawer = ref(false)
 const menus = reactive([
   {
@@ -110,6 +112,8 @@ const menus = reactive([
   height: 50px;
   margin-left: 1rem;
   cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .menu-group {
