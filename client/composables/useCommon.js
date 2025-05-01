@@ -1,15 +1,6 @@
 export default function useCommon() {
   const isApple = () => {
-    return [
-      'iPad Simulator',
-      'iPhone Simulator',
-      'iPod Simulator',
-      'iPad',
-      'iPhone',
-      'iPod',
-    ].includes(navigator.platform)
-    // iPad on iOS 13 detection
-    || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+    return (/iPad|iPhone|iPod/.test(navigator.userAgent) || /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) && !window.MSStream
   }
 
   return {

@@ -30,6 +30,13 @@
     transition: all .3s ease-in-out !important;
 }
 
+.custom-link {
+    color: rgb(var(--v-theme-primary));
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 450px) {
     .content-container {
         padding: 0 1rem !important;
