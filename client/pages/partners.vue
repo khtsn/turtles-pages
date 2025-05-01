@@ -179,5 +179,6 @@ const { openNewTab } = useNavigation()
 .thumbnail-img {
   width: 100%;
   max-width: 300px;
+  border-radius: 8px;
 }
 </style>
