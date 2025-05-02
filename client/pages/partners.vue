@@ -11,15 +11,17 @@
       <p class="mt-2">
         The Turtle community teamed up with CroFomo, another memecoin on Cronos. We each donated equal amounts to the liquidity pool and then burned it for life. <span
           class="custom-link"
-          @click="openNewTab('https://x.com/CROFOMO1?t=7tbPCFhE6NtFjjeUVJ27QQ&s=09')"
+          @click="openNewTab('https://x.com/CROFOMO1')"
         >Visit X Profile</span>
       </p>
       <div class="text-center mt-2">
-        <img
-          src="/crofomo.gif"
-          alt="thumbnail"
-          class="thumbnail-img"
-        >
+        <a href="https://x.com/CROFOMO1">
+          <img
+            src="/crofomo.gif"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
@@ -32,7 +34,13 @@
         >Visit Site</span>
       </p>
       <div class="text-center mt-2">
-        TBD
+        <a href="https://3look.io/tools/creative-studio">
+          <img
+            src="/3look.webp"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
@@ -41,21 +49,26 @@
       <p class="mt-2">
         We teamed up with Aryoshin $ARY, a memecoin on Cronos. We each added some liquidity to be burned, keeping our partnership for life. <span
           class="custom-link"
-          @click="openNewTab('https://x.com/CronosAry?t=LYQi2hrw1soWqz1s6EDMAA&s=09')"
+          @click="openNewTab('https://x.com/CronosAry')"
         >Visit X Profile</span>
       </p>
       <p class="mt-2">
         They've recently launched #ARYHOME, and integrated us. Swap, battle, or stake all their paired tokens. Follow their page for more details. Use only official links.
       </p>
-      <p class="text-primary mt-2">
+      <a
+        href="https://www.aryhome.xyz/swap"
+        class="text-primary mt-2"
+      >
         https://www.aryhome.xyz/swap
-      </p>
+      </a>
       <div class="text-center mt-2">
-        <img
-          src="/aryoshin.gif"
-          alt="thumbnail"
-          class="thumbnail-img"
-        >
+        <a href="https://www.aryhome.xyz/swap">
+          <img
+            src="/aryoshin.gif"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
@@ -64,15 +77,17 @@
       <p class="mt-2">
         We have partnered with Croginal Cats on their new DEX. We will be providing a liquidity pair on launch and the community will have opportunities to stake LPs into a vault at times. <span
           class="custom-link"
-          @click="openNewTab('https://x.com/Croginal?t=SMUSnYXQPunq38VUTL185g&s=09')"
+          @click="openNewTab('https://x.com/Croginal')"
         >Visit X Profile</span>
       </p>
       <div class="text-center mt-2">
-        <img
-          src="/croginal-cats.gif"
-          alt="thumbnail"
-          class="thumbnail-img"
-        >
+        <a href="https://x.com/Croginal">
+          <img
+            src="/croginal-cats.gif"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
@@ -81,21 +96,26 @@
       <p class="mt-2">
         Not an official partner, but MemesOnCronos is a staple to MemeCoins on Cronos. A platform where everyone can vote for their favorite memecoins daily, track pools, volume, and other valuable data. <span
           class="custom-link"
-          @click="openNewTab('https://x.com/memesoncronos?t=OssrUKKcGj9fcLUTfpRufQ&s=09')"
+          @click="openNewTab('https://x.com/memesoncronos')"
         >Visit X Profile</span>
       </p>
       <p class="mt-2">
         Go to their site and give us, and your favorite memecoins a daily vote. The highest voted community each month gets a free banner displayed for a week on their site. Landing a top 3 vote for the month gives us an extra point towards their verification process. Every vote matters #crofam! URL to site below.
       </p>
-      <p class="text-primary mt-2">
+      <a
+        href="https://www.memesoncronos.com/"
+        class="text-primary mt-2"
+      >
         https://www.memesoncronos.com/
-      </p>
+      </a>
       <div class="text-center mt-2">
-        <img
-          src="/vote.jpg"
-          alt="thumbnail"
-          class="thumbnail-img"
-        >
+        <a href="https://www.memesoncronos.com/">
+          <img
+            src="/vote.jpg"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
@@ -104,17 +124,30 @@
       <p class="mt-2">
         Obsidian Finance is a new Dex aggregator on Cronoschain built by Robin Cronos. <span
           class="custom-link"
-          @click="openNewTab('https://x.com/ObsidianSwap?t=fB48CcdV7F-c1uq7L03zww&s=09')"
+          @click="openNewTab('https://x.com/ObsidianSwap')"
         >Visit X Profile</span>
       </p>
       <p class="mt-2">
         They are the first live dex to give $TURTLE a whitelist! Have weekly trading battles and swap $TURTLE!
       </p>
-      <p class="text-primary mt-2">
+      <a
+        href="https://obsidian.finance"
+        class="text-primary mt-2"
+      >
         https://obsidian.finance
-      </p>
+      </a>
       <div class="text-center mt-2">
-        TBD
+        <a
+          href="https://obsidian.finance"
+          https:
+          obsidian.finance
+        >
+          <img
+            src="/obs.webp"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
@@ -123,32 +156,36 @@
       <p class="mt-2">
         Big Back was the first memecoin community to buy $TURTLE and burn liquidity with us! Since then we have been growing the pool. <span
           class="custom-link"
-          @click="openNewTab('https://x.com/BgBk_Official?t=Rol1hyoR0qsVNbv6MIRYdw&s=09')"
+          @click="openNewTab('https://x.com/BgBk_Official')"
         >Visit X Profile</span>
       </p>
       <div class="text-center mt-2">
-        <img
-          src="/big-back.gif"
-          alt="thumbnail"
-          class="thumbnail-img"
-        >
+        <a href="https://x.com/BgBk_Official">
+          <img
+            src="/big-back.gif"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
 
       <p class="subheader-text mt-4">
-        Filll
+        FILLL
       </p>
       <p class="mt-2">
         FILLL memecoin started their own liquidity pool and burned liquidity with us! Strengthening our connections with Crofam! <span
           class="custom-link"
-          @click="openNewTab('https://x.com/Filipez10?t=yh0TixwZ_a7WlluVcv5AZg&s=09')"
+          @click="openNewTab('https://x.com/Filipez10')"
         >Visit X Profile</span>
       </p>
       <div class="text-center mt-2">
-        <img
-          src="/filll.gif"
-          alt="thumbnail"
-          class="thumbnail-img"
-        >
+        <a href="https://x.com/Filipez10">
+          <img
+            src="/filll.gif"
+            alt="thumbnail"
+            class="thumbnail-img"
+          >
+        </a>
       </div>
     </v-container>
   </div>
