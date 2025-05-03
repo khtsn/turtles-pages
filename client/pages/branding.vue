@@ -9,7 +9,33 @@
         Meme Heads
       </p>
       <v-row class="mt-2">
-        TBD
+        <div class="mt-2">
+          <img
+            src="/brand-h1.png"
+            alt="brand-h1"
+            class="brand-img"
+          >
+          <img
+            src="/brand-h2.png"
+            alt="brand-h2"
+            class="brand-img"
+          >
+          <img
+            src="/brand-h3.png"
+            alt="brand-h3"
+            class="brand-img"
+          >
+          <img
+            src="/brand-h4.png"
+            alt="brand-h4"
+            class="brand-img"
+          >
+          <img
+            src="/brand-h5.png"
+            alt="brand-h5"
+            class="brand-img"
+          >
+        </div>
       </v-row>
 
       <p class="subheader-text text-primary mt-4">
@@ -65,5 +91,9 @@ useHead({
 .logo-img {
   width: 100%;
   max-width: 300px;
+}
+
+.brand-img {
+  max-width: 20%;
 }
 </style>
