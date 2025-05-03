@@ -5,10 +5,8 @@ import nftAbi from '~/assets/js/marketplace-contract.json'
 import tokenAbi from '~/assets/js/approval-contract.json'
 
 export default function useContract() {
-  // const nftContractAddress = '0x2bAA455e573df4019B11859231Dd9e425D885293'
-  // const tokenContractAddress = '0x8C9E2bEf2962CE302ef578113eebEc62920B7e57'
-  const nftContractAddress = '0x5848335Bbd8e10725F5A35d97A8e252eFdA9Be1a'
-  const tokenContractAddress = '0x2baa455e573df4019b11859231dd9e425d885293'
+  const nftContractAddress = '0x2bAA455e573df4019B11859231Dd9e425D885293'
+  const tokenContractAddress = '0x8C9E2bEf2962CE302ef578113eebEc62920B7e57'
 
   const disconnect = () => {
     const { disconnect } = useDisconnect()

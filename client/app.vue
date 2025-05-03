@@ -11,15 +11,15 @@
 <script setup>
 import { createAppKit } from '@reown/appkit/vue'
 import { EthersAdapter } from '@reown/appkit-adapter-ethers'
-import { cronos, cronosTestnet } from '@reown/appkit/networks'
+import { cronos } from '@reown/appkit/networks'
 
 const config = useRuntimeConfig()
 
 const metadata = {
   name: 'Turtle On Cronos',
   description: 'Turtle On Cronos',
-  url: 'http://localhost:8080', // origin must match your domain & subdomain
-  icons: [''],
+  url: 'https://turtleoncro.com', // origin must match your domain & subdomain
+  icons: ['https://intro.turtleoncro.com/reveal.jpg'],
 }
 
 createAppKit({
