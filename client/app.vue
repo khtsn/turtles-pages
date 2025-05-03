@@ -24,7 +24,7 @@ const metadata = {
 
 createAppKit({
   adapters: [new EthersAdapter()],
-  networks: [cronos, cronosTestnet],
+  networks: [cronos],
   metadata: metadata,
   projectId: config.public.walletConnectId,
   features: {
