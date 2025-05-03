@@ -39,6 +39,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appUrl: '',
+      walletConnectId: '001f7bb625b059ae0cc1fdac19a8b7cc',
     },
   },
   build: {

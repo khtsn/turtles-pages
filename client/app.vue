@@ -4,9 +4,23 @@
       <NuxtPage />
     </NuxtLayout>
 
-    <!-- <NotifySnackbar /> -->
+    <NotifySnackbar />
   </div>
 </template>
+
+<script setup>
+import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/vue'
+
+const { chain, metadata } = useProvider()
+const config = useRuntimeConfig()
+
+createWeb3Modal({
+  ethersConfig: defaultConfig({ metadata }),
+  chains: [chain],
+  projectId: config.public.walletConnectId,
+  enableAnalytics: true,
+})
+</script>
 
 <style>
 .slide-enter-active,
