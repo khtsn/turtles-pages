@@ -9,16 +9,27 @@
 </template>
 
 <script setup>
-import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/vue'
+import { createAppKit } from '@reown/appkit/vue'
+import { EthersAdapter } from '@reown/appkit-adapter-ethers'
+import { cronos, cronosTestnet } from '@reown/appkit/networks'
 
-const { chain, metadata } = useProvider()
 const config = useRuntimeConfig()
 
-createWeb3Modal({
-  ethersConfig: defaultConfig({ metadata }),
-  chains: [chain],
+const metadata = {
+  name: 'Turtle On Cronos',
+  description: 'Turtle On Cronos',
+  url: 'http://localhost:8080', // origin must match your domain & subdomain
+  icons: [''],
+}
+
+createAppKit({
+  adapters: [new EthersAdapter()],
+  networks: [cronos, cronosTestnet],
+  metadata: metadata,
   projectId: config.public.walletConnectId,
-  enableAnalytics: true,
+  features: {
+    analytics: true, // Optional - defaults to your Cloud configuration
+  },
 })
 </script>
 

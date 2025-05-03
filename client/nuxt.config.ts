@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       })
     },
   ],
-  ssr: true,
+  ssr: false,
   devtools: { enabled: true },
   app: {
     head: {
@@ -39,7 +39,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appUrl: '',
-      walletConnectId: '001f7bb625b059ae0cc1fdac19a8b7cc',
+      walletConnectId: 'd597fb2c81b43b56bb52a248de3cbca2',
     },
   },
   build: {

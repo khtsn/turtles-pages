@@ -100,7 +100,7 @@ const menus = reactive([
     href: '/turtle-paper',
   },
   {
-    title: 'Mint Turtle',
+    title: 'Mint Turtles NFTs',
     to: '/mint-turtle',
     href: '/mint-turtle',
   },

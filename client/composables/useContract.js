@@ -1,52 +1,74 @@
-import { ethers } from 'ethers'
-import marketplaceData from '~/assets/js/marketplace-contract.json'
-import approvalData from '~/assets/js/approval-contract.json'
+import { ethers, Contract } from 'ethers'
+import { useDisconnect, useAppKit } from '@reown/appkit/vue'
+
+import nftAbi from '~/assets/js/marketplace-contract.json'
+import tokenAbi from '~/assets/js/approval-contract.json'
 
 export default function useContract() {
-  const marketplaceContractData = ref(null)
-  const approvalContractData = ref(null)
-  const marketplaceAddress = '0x2bAA455e573df4019B11859231Dd9e425D885293'
-  const approvalAddress = '0x8C9E2bEf2962CE302ef578113eebEc62920B7e57'
+  // const nftContractAddress = '0x2bAA455e573df4019B11859231Dd9e425D885293'
+  // const tokenContractAddress = '0x8C9E2bEf2962CE302ef578113eebEc62920B7e57'
+  const nftContractAddress = '0x5848335Bbd8e10725F5A35d97A8e252eFdA9Be1a'
+  const tokenContractAddress = '0x2baa455e573df4019b11859231dd9e425d885293'
 
-  onMounted(() => {
-    marketplaceContractData.value = marketplaceData.abi
-    approvalContractData.value = approvalData.abi
-  })
-
-  const approveMint = async (signer, amount) => {
-    const contract = new ethers.Contract(
-      approvalAddress,
-      approvalContractData.value,
-      signer)
-    const approval = await contract.approve(
-      marketplaceAddress,
-      amount,
-    )
-    return approval
+  const disconnect = () => {
+    const { disconnect } = useDisconnect()
+    disconnect()
   }
-  const mint = async (signer, amount) => {
+
+  const open = () => {
+    const { open } = useAppKit()
+    open()
+  }
+
+  const getERC20TokenFee = async (provider) => {
+    const nft = new Contract(
+      nftContractAddress,
+      nftAbi,
+      provider)
+    const fee = await nft.erc20TokenFee()
+    return fee
+  }
+
+  const getNativeTokenFee = async (provider) => {
+    const nft = new Contract(
+      nftContractAddress,
+      nftAbi,
+      provider)
+    const fee = await nft.nativeTokenFee()
+    return fee
+  }
+
+  const approveERC20Token = async (signer, amount) => {
+    const token = new Contract(tokenContractAddress, tokenAbi, signer)
+    const tx = await token.approve(nftContractAddress, amount)
+    return tx
+  }
+  const mintWithERC20Token = async (signer, amount) => {
     const contract = new ethers.Contract(
-      marketplaceAddress,
-      marketplaceContractData.value,
+      nftContractAddress,
+      nftAbi,
       signer)
     const result = await contract.publicMintWithERC20Token(amount)
     return result
   }
-  const mintNative = async (signer, amount) => {
-    const contract = new ethers.Contract(
-      marketplaceAddress,
-      marketplaceContractData.value,
+  const mintWithNativeToken = async (signer, fee, amount) => {
+    const contract = new Contract(
+      nftContractAddress,
+      nftAbi,
       signer)
     const result = await contract.publicMintWithNativeToken(
-      ethers.utils.parseEther('240') * amount,
-      amount,
+      amount, { value: fee * BigInt(amount) },
     )
     return result
   }
 
   return {
-    approveMint,
-    mint,
-    mintNative,
+    approveERC20Token,
+    mintWithERC20Token,
+    mintWithNativeToken,
+    getERC20TokenFee,
+    getNativeTokenFee,
+    disconnect,
+    open,
   }
 }

@@ -16,11 +16,32 @@
 
     <v-container class="content-container">
       <p class="header-text text-uppercase">
-        Mint turtle
+        Mint Turtles NFTs
+      </p>
+      <v-row>
+        <v-col>
+          <img
+            src="/mint-banner.jpg"
+            class="thumbnail"
+          >
+        </v-col>
+      </v-row>
+      <p>
+        <b>Max supply:</b> 10,625<br>
+        <b>CA:</b> 0x2baa455e573df4019b11859231dd9e425d885293<br>
+        <b>Max 20 mints per transaction</b><br>
+        <b>Mint fee with TURTLES:</b> {{ tokenFee }} TURTLES per NFT<br>
+        <b>Mint fee with CRO:</b> {{ nativeFee }} CRO per NFT<br>
+        <b v-if="eip155Account.isConnected">Connected wallet address:</b> {{ eip155Account.address }}
+        <a
+          v-if="eip155Account.isConnected"
+          href="#"
+          @click="disconnect()"
+        >[Disconnect wallet]</a>
       </p>
 
       <v-row class="mt-4">
-        <v-col v-if="isConnected">
+        <v-col v-if="eip155Account.isConnected">
           <v-row>
             <v-col
               cols="12"
@@ -45,18 +66,24 @@
               <v-btn
                 flat
                 class="custom-button mint-button mr-2"
-                @click="submitMint"
+                @click="submitMintERC20"
               >
-                Mint ERC20
+                Mint with TURTLES
               </v-btn>
               <v-btn
                 flat
                 class="custom-button mint-button"
                 @click="submitMintNative"
               >
-                Mint Native
+                Mint with CRO
               </v-btn>
             </v-col>
+          </v-row>
+          <v-row v-if="transactionHash">
+            <p>
+              Minted successfully!<br>
+              Transaction Hash: <a :href="prepareExplorerURL(transactionHash)">{{ transactionHash }}</a>
+            </p>
           </v-row>
         </v-col>
         <v-col v-else>
@@ -64,7 +91,7 @@
             flat
             size="large"
             class="custom-button"
-            @click="open()"
+            @click="open"
           >
             Connect wallet
           </v-btn>
@@ -75,56 +102,62 @@
 </template>
 
 <script setup>
-import { useWeb3Modal, useWeb3ModalProvider, useWeb3ModalAccount } from '@web3modal/ethers5/vue'
+import { useAppKitAccount, useAppKitProvider } from '@reown/appkit/vue'
+import { ethers, BrowserProvider } from 'ethers'
 
 useHead({
-  title: 'Mint Turtle',
+  title: 'Mint Turtles NFTs',
   meta: [
     { name: 'description', content: 'Mint Turtle Page' },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: 'Mint Turtle - Turtle On Cronos',
+      content: 'Mint Turtles NFTs - Turtle On Cronos',
     },
     {
       hid: 'og:description',
       property: 'og:description',
-      content: 'Mint Turtle Page',
+      content: 'Mint Turtles NFTs Page',
     },
   ],
 })
 
 const { notifySuccess, notifyError } = useSnackbar()
-const { isConnected, getSigner } = useProvider()
-const { approveMint, mint, mintNative } = useContract()
-const { open } = useWeb3Modal()
-const { walletProvider } = useWeb3ModalProvider()
-const { chainId } = useWeb3ModalAccount()
-
+const { approveERC20Token, mintWithERC20Token, mintWithNativeToken,
+  getERC20TokenFee, getNativeTokenFee, open,
+  disconnect } = useContract()
 const amount = ref(1)
 const processing = ref(false)
+const eip155Account = useAppKitAccount({ namespace: 'eip155' })
+const transactionHash = ref(false)
+const nativeFee = ref(0)
+const tokenFee = ref(0)
 
-const submitMint = async () => {
-  const provider = walletProvider
-  if (!provider.value) {
-    notifyError('User disconnected')
-    return
+watch(eip155Account.value, async (account) => {
+  if (account.isConnected) {
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    nativeFee.value = ethers.formatEther(await getNativeTokenFee(provider))
+    tokenFee.value = ethers.formatEther(await getERC20TokenFee(provider))
   }
+})
 
-  if (chainId.value != 25) {
-    open({ view: 'Networks' })
-    return
-  }
-
+const submitMintERC20 = async () => {
   try {
-    const signer = getSigner(provider.value)
-    const approval = await approveMint(signer, amount.value)
     processing.value = true
-    await approval.wait()
-    const result = await mint(signer, amount.value)
-    await result.wait()
+
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+    const fee = await getERC20TokenFee(provider)
+    const tx1 = await approveERC20Token(signer, fee * BigInt(amount.value))
+    await tx1.wait()
+    const tx2 = await mintWithERC20Token(signer, amount.value)
+    const receipt = await tx2.wait()
+    transactionHash.value = receipt.hash
+
     processing.value = false
-    notifySuccess('Request mint successfully')
+    notifySuccess('Minted successfully!')
   }
   catch (err) {
     console.error(err)
@@ -133,24 +166,21 @@ const submitMint = async () => {
   }
 }
 const submitMintNative = async () => {
-  const provider = walletProvider
-  if (!provider.value) {
-    notifyError('User disconnected')
-    return
-  }
-
-  if (chainId.value != 25) {
-    open({ view: 'Networks' })
-    return
-  }
-
   try {
-    const signer = getSigner(provider.value)
-    const result = await mintNative(signer, amount.value)
     processing.value = true
-    await result.wait()
+
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+
+    const fee = await getNativeTokenFee(provider)
+    const tx = await mintWithNativeToken(signer, fee, amount.value)
+    const receipt = await tx.wait()
+    console.log(receipt)
+    transactionHash.value = receipt.hash
+
     processing.value = false
-    notifySuccess('Request mint successfully')
+    notifySuccess('Minted successfully!')
   }
   catch (err) {
     console.error(err)
@@ -158,11 +188,23 @@ const submitMintNative = async () => {
     notifyError('Unable to mint item. Please make sure you have enough token to mint the item.')
   }
 }
+
+const prepareExplorerURL = (val) => {
+  {
+    return ('https://cronoscan.com/tx/' + val)
+  }
+}
 </script>
 
 <style scoped>
 .mint-button {
   height: 40px !important;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 450px) {
