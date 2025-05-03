@@ -12,7 +12,7 @@
             turtle on
           </p>
           <p class="headline-text text-uppercase mt-n4">
-            chronos
+            cronos
           </p>
           <p class="mt-2">
             Welcome to Turtle on Cronos, the ultimate destination for $TURTLE enthusiasts! You will find all resources and links related to the community driven memecoin on this website.
