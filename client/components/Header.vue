@@ -95,7 +95,7 @@ const menus = reactive([
     href: '/about',
   },
   {
-    title: 'Turtle Paper',
+    title: 'Turtle Whitepaper',
     to: '/turtle-paper',
     href: '/turtle-paper',
   },
