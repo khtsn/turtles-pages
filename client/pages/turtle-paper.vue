@@ -134,16 +134,16 @@
 useHead({
   title: 'Turtle Paper',
   meta: [
-    { name: 'description', content: 'Turtle Paper Page' },
+    { name: 'description', content: 'Turtle Whitepaper Page' },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: 'Turtle Paper - Turtle On Cronos',
+      content: 'Turtle Whitepaper - Turtle On Cronos',
     },
     {
       hid: 'og:description',
       property: 'og:description',
-      content: 'Turtle Paper Page',
+      content: 'Turtle Whitepaper Page',
     },
   ],
 })
