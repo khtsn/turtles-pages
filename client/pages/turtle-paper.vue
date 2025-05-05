@@ -59,7 +59,7 @@
       </p>
       <p class="mt-2">
         Non-profit 10,625 piece collection with 216 traits living on the Cronos Blockchain using an ERC721 contract. Hand drawn art. Original branding, not a derivative.<br>
-        We will focus on Cronos and cross chain EVM partnerships to grow community and exposure in the space. Our main focus will be on gaming partnerships where the token cn be used in their platforms, but not limited to.<br>
+        We will focus on Cronos and cross chain EVM partnerships to grow community and exposure in the space. Our main focus will be on gaming partnerships where the token can be used in their platforms, but not limited to.<br>
         We will also introduce a NFT staking contract joined with Turtle to earn daily Turtle for holding.
       </p>
       <p class="subheader-text text-primary mt-4">
@@ -69,7 +69,7 @@
         500 Admin mint for Turtlecommunity-vault.cro to be owned by DAO.<br>
         150 Admin mint Cryptodaave<br>
         150 Admin mint DarkmindofL<br>
-        1200 Admin Mint airdrops to early registered wallets, top 200 Turle token holders, CamelsNFT holders with 4 or more, and Camels 3D holders with 2 or more. Completed on May 3, 2025. Some remain throughout mint.<br>
+        1200 Admin Mint airdrops to early registered wallets, top 200 Turtle token holders, CamelsNFT holders with 4 or more, and Camels 3D holders with 2 or more. Completed on May 3, 2025. Some remain throughout mint.<br>
         2625 mints maximum at a 200,000 turtle mint cost. About $12 at launch, adjusting over time with progress of token and mint.<br>
         6000 public paid mints x 240 CRO Approximately $20 USD in CRO, adjusted in major price moves.
       </p>
