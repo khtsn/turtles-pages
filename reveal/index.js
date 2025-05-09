@@ -8,7 +8,7 @@ const provider = new ethers.JsonRpcProvider("https://evm.cronos.org/")
 const abi = require('./abi.json')
 const contract = new Contract(nftAddress, abi, provider)
 
-app.get('/:id.json', async (req, res) => {
+const getMetadata = async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id']) + 1
         const totalSupply = await contract.totalSupply()
@@ -20,7 +20,7 @@ app.get('/:id.json', async (req, res) => {
     } catch {
         res.status(404).send({})
     }
-})
+}
 
 app.get('/:id.png', async (req, res) => {
     try {
@@ -36,6 +36,8 @@ app.get('/:id.png', async (req, res) => {
         res.status(404).send({})
     }
 })
+app.get('/:id.json', getMetadata)
+app.get('/:id', getMetadata)
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
