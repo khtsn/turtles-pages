@@ -10,7 +10,7 @@ const contract = new Contract(nftAddress, abi, provider)
 
 app.get('/:id.json', async (req, res) => {
     try {
-        const tokenId = parseInt(req.params['id'])
+        const tokenId = parseInt(req.params['id']) + 1
         const totalSupply = await contract.totalSupply()
         if (tokenId >= totalSupply) {
             res.status(404).send({})
@@ -24,7 +24,7 @@ app.get('/:id.json', async (req, res) => {
 
 app.get('/:id.png', async (req, res) => {
     try {
-        const tokenId = parseInt(req.params['id'])
+        const tokenId = parseInt(req.params['id']) + 1
         const totalSupply = await contract.totalSupply()
         if (tokenId >= totalSupply) {
             res.status(404).send({})
