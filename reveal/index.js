@@ -1,19 +1,16 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const { ethers, Contract } = require('ethers')
 const storageURL = "https://turtlesnfts.zack.vn"
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+const nftAddress = "0x2baa455e573df4019b11859231dd9e425d885293"
+const provider = new ethers.JsonRpcProvider("https://evm.cronos.org/")
+const abi = require('./abi.json')
+const contract = new Contract(nftAddress, abi, provider)
 
 app.get('/:id.json', async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id'])
-        const provider = new ethers.JsonRpcProvider("https://evm.cronos.org/")
-        const abi = require('./abi.json')
-        const contract = new Contract("0x2baa455e573df4019b11859231dd9e425d885293", abi, provider)
         const totalSupply = await contract.totalSupply()
         if (tokenId >= totalSupply) {
             res.status(404).send({})
@@ -21,16 +18,13 @@ app.get('/:id.json', async (req, res) => {
         const url = await fetch(storageURL + "/" + tokenId + ".json")
         res.send(await url.json())
     } catch {
-        res.send({})
+        res.status(404).send({})
     }
 })
 
 app.get('/:id.png', async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id'])
-        const provider = new ethers.JsonRpcProvider("https://evm.cronos.org/")
-        const abi = require('./abi.json')
-        const contract = new Contract("0x2baa455e573df4019b11859231dd9e425d885293", abi, provider)
         const totalSupply = await contract.totalSupply()
         if (tokenId >= totalSupply) {
             res.status(404).send({})
@@ -39,10 +33,10 @@ app.get('/:id.png', async (req, res) => {
         res.setHeader('content-type', 'image/png');
         res.send(await url.bytes())
     } catch {
-        res.send({})
+        res.status(404).send({})
     }
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`App listening on port ${port}`)
 })
