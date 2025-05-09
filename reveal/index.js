@@ -12,7 +12,7 @@ app.get('/:id.json', async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id']) + 1
         const totalSupply = await contract.totalSupply()
-        if (tokenId >= totalSupply) {
+        if (tokenId > totalSupply) {
             res.status(404).send({})
         }
         const url = await fetch(storageURL + "/" + tokenId + ".json")
@@ -26,7 +26,7 @@ app.get('/:id.png', async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id']) + 1
         const totalSupply = await contract.totalSupply()
-        if (tokenId >= totalSupply) {
+        if (tokenId > totalSupply) {
             res.status(404).send({})
         }
         const url = await fetch(storageURL + "/" + tokenId + ".png")
