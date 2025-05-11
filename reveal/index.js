@@ -7,6 +7,7 @@ const nftAddress = "0x2baa455e573df4019b11859231dd9e425d885293"
 const provider = new ethers.JsonRpcProvider("https://evm.cronos.org/")
 const abi = require('./abi.json')
 const contract = new Contract(nftAddress, abi, provider)
+var cache = require('express-redis-cache')();
 
 const getMetadata = async (req, res) => {
     try {
@@ -22,7 +23,7 @@ const getMetadata = async (req, res) => {
     }
 }
 
-app.get('/:id.png', async (req, res) => {
+app.get('/:id.png', cache.route({type: 'image/png'}), async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id'])
         const totalSupply = await contract.totalSupply()
@@ -36,8 +37,8 @@ app.get('/:id.png', async (req, res) => {
         res.status(404).send({})
     }
 })
-app.get('/:id.json', getMetadata)
-app.get('/:id', getMetadata)
+app.get('/:id.json', cache.route({type: 'application/json'}), getMetadata)
+app.get('/:id', cache.route({type: 'application/json'}), getMetadata)
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
