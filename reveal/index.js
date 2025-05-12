@@ -32,6 +32,7 @@ app.get('/:id.png', async (req, res) => {
         }
         const url = await fetch(storageURL + "/" + tokenId + ".png")
         res.setHeader('content-type', 'image/png');
+        res.setHeader('cache-control', 'max-age=5184000')
         res.send(await url.bytes())
     } catch {
         res.status(404).send({})
