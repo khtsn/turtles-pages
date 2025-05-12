@@ -23,7 +23,7 @@ const getMetadata = async (req, res) => {
     }
 }
 
-app.get('/:id.png', cache.route({type: 'image/png'}), async (req, res) => {
+app.get('/:id.png', async (req, res) => {
     try {
         const tokenId = parseInt(req.params['id'])
         const totalSupply = await contract.totalSupply()
