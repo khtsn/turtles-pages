@@ -9,14 +9,13 @@ const abi = require('./abi.json')
 const contract = new Contract(nftAddress, abi, provider)
 const proxy = require('express-http-proxy');
 
-const getMetadata = async (req, res) => {
+const getMetadata = async (req, res, next) => {
     const tokenId = parseInt(req.params['id']) + 1
     const totalSupply = await contract.totalSupply()
     if (tokenId > totalSupply) {
         res.status(404).send({})
     }
-    const url = await fetch(storageURL + "/" + tokenId + ".json")
-    res.send(await url.json())
+    next()
 }
 
 app.get('/:id.png', async (req, res, next) => {
@@ -27,8 +26,12 @@ app.get('/:id.png', async (req, res, next) => {
     }
     next()
 }, proxy(storageURL))
-app.get('/:id.json', getMetadata)
-app.get('/:id', getMetadata)
+app.get('/:id.json', getMetadata, proxy(storageURL))
+app.get('/:id', getMetadata, proxy(storageURL, {
+    proxyReqPathResolver: function (req) {
+      return req.url + '.json';
+    }
+  }))
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
