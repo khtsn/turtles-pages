@@ -26,10 +26,14 @@ app.get('/:id.png', async (req, res, next) => {
     }
     next()
 }, proxy(storageURL))
-app.get('/:id.json', getMetadata, proxy(storageURL))
+app.get('/:id.json', getMetadata, proxy(storageURL, {
+    proxyReqPathResolver: function (req) {
+      return '/' + (parseInt(req.params['id']) + 1) +'.json';
+    }
+  }))
 app.get('/:id', getMetadata, proxy(storageURL, {
     proxyReqPathResolver: function (req) {
-      return req.url + '.json';
+      return '/' + (parseInt(req.params['id']) + 1) +'.json';
     }
   }))
 
