@@ -36,7 +36,7 @@
             <img
               src="/telegram.svg"
               alt="social"
-              class="social-icon"
+              class="social-icon mr-4"
               @click="openNewTab('https://t.me/turtleoncrocommunity')"
             >
             <img
