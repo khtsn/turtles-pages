@@ -39,6 +39,12 @@
               class="social-icon"
               @click="openNewTab('https://t.me/turtleoncrocommunity')"
             >
+            <img
+              src="/discord.svg"
+              alt="social"
+              class="social-icon"
+              @click="openNewTab('https://discord.gg/qBa9FFa7BD')"
+            >
           </div>
         </v-col>
       </v-row>
