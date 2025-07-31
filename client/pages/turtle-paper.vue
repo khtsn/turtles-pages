@@ -71,7 +71,7 @@
         1200 Admin Mint airdrops to early registered wallets, top 200 Turtle token holders, CamelsNFT holders with 4 or more, and Camels 3D holders with 2 or more. Completed on May 3, 2025. Some remain throughout mint.<br>
         2625 mints maximum at a 150,000 Turtle mint cost. UPDATED JULY 31 from 200,000 Turtle.<br>
         6000 public paid mints x 180 CRO. UPDATED JULY 31 from 240 CRO.<br>
-        <br><br>
+        <br>
         Minters still holding their assets after July 31 reduction announcement are eligible for NFT credit by reaching out through official socials.
       </p>
       <p class="subheader-text text-primary mt-4">
