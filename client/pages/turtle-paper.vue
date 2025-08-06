@@ -72,7 +72,7 @@
         2625 mints maximum at a 150,000 Turtle mint cost. UPDATED JULY 31 from 200,000 Turtle.<br>
         6000 public paid mints x 180 CRO. UPDATED JULY 31 from 240 CRO.<br>
         <br>
-        Minters still holding their assets after July 31 reduction announcement are eligible for NFT credit by reaching out through official socials.
+        Minters still holding their assets after July 31 reduction announcement are eligible for NFT credit by reaching out through official socials. 1 airdropped NFT for every 3 previously minted.
       </p>
       <p class="subheader-text text-primary mt-4">
         Turtle NFT Cost and Fund Allocation:

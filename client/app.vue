@@ -11,7 +11,7 @@
 <script setup>
 import { createAppKit } from '@reown/appkit/vue'
 import { EthersAdapter } from '@reown/appkit-adapter-ethers'
-import { cronos } from '@reown/appkit/networks'
+import { cronos, cronosTestnet } from '@reown/appkit/networks'
 
 const config = useRuntimeConfig()
 
@@ -24,7 +24,7 @@ const metadata = {
 
 createAppKit({
   adapters: [new EthersAdapter()],
-  networks: [cronos],
+  networks: [cronos, cronosTestnet],
   metadata: metadata,
   projectId: config.public.walletConnectId,
   features: {
