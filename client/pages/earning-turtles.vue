@@ -16,7 +16,7 @@
 
     <v-container class="content-container">
       <p class="header-text text-uppercase">
-        Earning Turtles
+        Earning Turtle
       </p>
       <v-row>
         <v-col>
@@ -166,18 +166,18 @@ import marketplaceABI from '~/assets/js/marketplace-contract.json'
 import approvalABI from '~/assets/js/approval-contract.json'
 
 useHead({
-  title: 'Earning Turtles',
+  title: 'Earning Turtle',
   meta: [
-    { name: 'description', content: 'Earning Turtles Page' },
+    { name: 'description', content: 'Earning Turtle Page' },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: 'Earning Turtles - Turtle On Cronos',
+      content: 'Earning Turtle - Turtle On Cronos',
     },
     {
       hid: 'og:description',
       property: 'og:description',
-      content: 'Earning Turtles Page',
+      content: 'Earning Turtle Page',
     },
   ],
 })

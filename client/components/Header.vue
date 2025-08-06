@@ -104,11 +104,11 @@ const menus = reactive([
     to: '/mint-turtle',
     href: '/mint-turtle',
   },
-  // {
-  //   title: 'Earning Turtles',
-  //   to: '/earning-turtles',
-  //   href: '/earning-turtles',
-  // },
+  {
+    title: 'Earning Turtle',
+    to: '/earning-turtle',
+    href: '/earning-turtle',
+  },
 ])
 </script>
 
