@@ -27,6 +27,7 @@
         </v-col>
       </v-row>
       <p>
+        <b>CA:</b> 0x7016db90c1f8b87ea4d18b7e53fb7c42999bc995<br>
         <b>Required TURTLE per NFT:</b> {{ requiredTurtlePerNFT }} TURTLE<br>
         <b>Daily earning rate:</b> {{ dailyEarningRate }} TURTLE per NFT<br>
         <b>Withdrawal fee (less than 24h):</b> {{ first24hFee }} CRO<br>
