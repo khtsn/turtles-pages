@@ -34,6 +34,12 @@
               @click="openNewTab('https://x.com/turtleoncro')"
             >
             <img
+              src="/x.svg"
+              alt="social"
+              class="social-icon mr-4"
+              @click="openNewTab('https://x.com/turtlecrobot')"
+            >
+            <img
               src="/telegram.svg"
               alt="social"
               class="social-icon mr-4"

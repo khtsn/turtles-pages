@@ -123,6 +123,7 @@
             <br>
             <p>
               🔸️Each NFT must pair with 35,000 Turtle to earn a fixed rate of 10 Turtle per day.<br>
+              🔸️Fixed 10.29% annual return (excluding NFT cost)
               🔸️35,000 Turtle lock-up can be adjusted, but minimum is 10,000.<br>
               🔸️10 Turtle per day earned can be adjusted, but 10 is the maximum.<br>
               🔸️No withdraw feature on contract<br>
@@ -130,7 +131,7 @@
               🔸️Your NFT stays in your wallet
             </p>
             <br>
-            <p>Having no withdraw up insures that NO-ONE, INCLUDING US, can remove funds from the contract ANY reason, at any time, ever! Turtle in the contract can only be distributed to corresponding $TURTLE and Turtle NFT pairings, when they are initiated.</p>
+            <p>Having no withdraw up insures that NO-ONE, INCLUDING US, can remove funds from the contract for ANY reason, at any time, ever! Turtle in the contract can only be distributed to corresponding $TURTLE and Turtle NFT pairings, when they are initiated.</p>
             <br>
             <p>
               🔸️This is a maximum of 3.88% or 38,781,250 million turtle emissions annually, if max supply token and NFT pairings were locked. We purchased 12% of supply, or 3 years for this, prior to any NFT minting or royalty buybacks.<br>

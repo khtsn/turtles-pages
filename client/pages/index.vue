@@ -21,7 +21,7 @@
             flat
             size="large"
             class="custom-button mt-4"
-            @click="openNewTab('https://x.com/TurtleonCro?t=kF5epkj0Dk6L2WOu3vg_0Q&s=09')"
+            @click="openNewTab('https://x.com/TurtleonCro')"
           >
             Explore the $TURTLE pond
           </v-btn>
@@ -86,7 +86,7 @@
             </v-card-title>
             <v-card-text>
               <p>
-                The first liquidity pool was vaulted and the keys burned. The community now has 22 active LPs, and is trading on 4 decentralized exchanges. Adding your own liquidity is encouraged and helps decentralization, stability, and longterm growth.
+                The first liquidity pool was vaulted and the keys burned. The community now has over many active LPs, and is trading on 4 decentralized exchanges. Adding your own liquidity is encouraged and helps decentralization, stability, and longterm growth.
               </p>
             </v-card-text>
           </v-card>
@@ -137,7 +137,7 @@
           <p class="subheader-text text-primary">
             Where to buy?
           </p>
-          <p>Currently trading on VVS.Finance, MMFINANCE, Ebisus Bay, and CronaSwap decentralized exchanges. Download CryptoCom defi wallet from any app stores, or switch networks on your existing wallet.</p>
+          <p>Currently trading on VVS.Finance, MMFINANCE, Ebisus Bay, Obsidian Finance, and CronaSwap decentralized exchanges. Download CryptoCom onchain wallet from any app stores, or switch networks on your existing wallet.</p>
         </v-col>
       </v-row>
       <v-row>
@@ -218,7 +218,7 @@
             join turtle on cronos
           </p>
           <p class="mt-2">
-            Turtle is programmed to move with the best cryptocurrencies longterm. Get started by downloading the Cryptocom Defi wallet.
+            Turtle is programmed to move with the best cryptocurrencies longterm. Get started by downloading the Cryptocom Onchain wallet.
           </p>
           <v-btn
             flat
@@ -226,7 +226,7 @@
             class="custom-button mt-4"
             @click="isApple ? openNewTab('https://apps.apple.com/us/app/crypto-com-onchain-wallet/id1512048310') : openNewTab('https://play.google.com/store/apps/details?id=com.defi.wallet')"
           >
-            Cryptocom Defi Wallet
+            Cryptocom Onchain Wallet
           </v-btn>
         </v-col>
         <v-col
@@ -263,7 +263,7 @@
               Track LIQUIDITY pools
             </p>
             <p>
-              At this moment turtle is paired with wcro, wbtc, weth, usdc, caw, Mery, vvs, crofomo, PEPE, moon, croid, crona, FILLL, BGBK, CORGIAI, ARY, Stab, xrp, Croginal.
+              At this moment turtle is paired with WCRO, WBTC, WETH, USDC, CAW, MERY, VVS, CROFOMO, PEPE, MOON, CROID, CRONA, FILLL, BGBK, CORGIAI, ARY, STAB, XRP, CROGINAL, ROBIN, ETC, NEURO, MTD.
               <NuxtLink
                 to="/dexscreener"
                 class="text-primary font-weight-bold"

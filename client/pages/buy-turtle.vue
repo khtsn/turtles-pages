@@ -12,7 +12,7 @@
         1) Download <span
           class="custom-link"
           @click="isApple ? openNewTab('https://apps.apple.com/us/app/crypto-com-onchain-wallet/id1512048310') : openNewTab('https://play.google.com/store/apps/details?id=com.defi.wallet')"
-        >Crypto Defi Wallet</span> or Switch networks on your existing wallet to Cronos.
+        >Crypto Onchain Wallet</span> or Switch networks on your existing wallet to Cronos.
       </p>
       <p class="mt-2">
         2) Buy Cronos native token  for swaps and gas fees using their built in services or bridge using a well known bridge like changenow.io or synapseprotocol.com. There are many available. Check users reviews.
@@ -21,13 +21,26 @@
         3) Import TURTLE token on cronos network to your wallet using our Contract Address. This is necessary until we get whitelistings to see the token in your wallet.
       </p>
       <p class="mt-2">
-        4) VVS.FINANCE is the preferred dex for trading with the most liquidity. Also trading on cronosmm.finance,  ebisusbay.com, and Cronaswap.org. Import Contract Address again to swap TURTLE.
+        4) VVS.FINANCE is the preferred dex for trading with the most liquidity. Import Contract Address again to swap TURTLE. Also trading on ebisusbay.com, obsidian.finance, cronaswap.org, swap.doonft.com.
       </p>
       <p class="mt-2">
         5) You can now swap assets for Turtle and see the assets in your wallet.
       </p>
       <p class="mt-2">
         6) Now, go to X. Tag us, meme us, and post us! This is how we thrive!
+      </p>
+      <p class="mt-2">
+        <b>Direct Exchange links:</b><br>
+        <a href="https://vvs.finance/swap?inputCurrency=CRO&outputCurrency=0x8C9E2bEf2962CE302ef578113eebEc62920B7e57">VVS Finance</a><br>
+        <a href="https://app.ebisusbay.com/dex/swap?outputCurrency=0x8C9E2bEf2962CE302ef578113eebEc62920B7e57">Ebisus Bay</a><br>
+        <a href="https://obsidian.finance/?outputCurrency=0x8C9E2bEf2962CE302ef578113eebEc62920B7e57">Obsidian Finance</a><br>
+        <a href="https://swap.doonft.com/?output=0x8c9e2bef2962ce302ef578113eebec62920b7e57&chain=25">DooSwap</a><br>
+      </p>
+      <p class="mt-2">
+        <b>Turtles NFT Secondary:</b><br>
+        <a href="https://minted.network/collections/cronos/0x2baa455e573df4019b11859231dd9e425d885293">Minted Network</a><br>
+        <a href="https://app.ebisusbay.com/collection/cronos/turtles-nft">Ebisus Bay</a><br>
+        <a href="https://corgistudio.io/collection/6896bcedb6297e2149b07b5c?tab=ONSALE">Corgi Studio</a><br>
       </p>
     </v-container>
   </div>

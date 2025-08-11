@@ -70,9 +70,9 @@ const { pushTo } = useNavigation()
 const drawer = ref(false)
 const menus = reactive([
   {
-    title: 'Dexscreener Links',
-    to: '/dexscreener',
-    href: '/dexscreener',
+    title: 'Links',
+    to: '/links',
+    href: '/links',
   },
   {
     title: 'Buy Turtle',

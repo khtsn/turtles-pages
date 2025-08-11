@@ -26,7 +26,7 @@
       </p>
       <p class="mt-2">
         The Turtle token was launched on the Cronos Blockchain Mar 19 2024, and abandoned by its original dev in Early May 2024. The community has taken over since.<br>
-        CryptoDaave has led this initiative and continued building liquidity on VVS Finance, the preferred DEX on Cronos with the help of the community. We have also now been whitelisted on Ebisu's Bay and started growing liquidity there. There is also liquidity on CronaSwap and MMFinance.<br>
+        CryptoDaave has led this initiative and continued building liquidity on VVS Finance, the preferred DEX on Cronos with the help of the community.We have also now been whitelisted on Ebisu's Bay, Obsidian Finance, and also DooSWap aggregator. There is also liquidity on CronaSwap and MMFinance.<br>
         The original dev burned his keys to the first MMF LP before leaving. As a CTO, there was no funding for development growth. This is a non tax token and all of the supply was circulating from day one.<br>
         It is original branding and not a derivative. We need funds for future developments, and the majority of liquidity burned in all of our trading pairs.<br>
         We are launching a non-profit NFT collection to further our reach in the space as a community and gather funds for NFT/CTO costs, development, and liquidity burning.<br>
@@ -47,7 +47,7 @@
         Turtle Overview:
       </p>
       <p class="mt-2">
-        We have over 25 trading pairs. All have burned liquidity. We would like our main CRO liquidity pool on VVS Finance to be much bigger than our MMF pool to reduce the impact on trades, and with a minimum amount of burned 80% liquidity. It is approximately 25% bigger than MMF now. It will be done slowly over time with funds allocated from NFTS.<br>
+        We now have many trading pairs. All have burned liquidity. We would like our main CRO liquidity pool on VVS Finance to be much bigger than our MMF pool to reduce the impact on trades, and with a minimum amount of burned 80% liquidity. It is approximately 25% bigFger than MMF now. It will be done slowly over time with funds allocated from NFTS.<br>
         We will also set aside treasury funds for future CEX listings and/or development in the community vault.<br>
         Any funds in the vault that are to be used for growth and development will be voted by the community Dao formed through NFT ownership before spending.<br>
         Our first goals as a community will be coin gecko and CMC listings. As a CTO, we have a new X page, website, and Dexscreener paid for. The NFTs will introduce a way to earn Turtle with a FIXED rate, adjustable every year.<br>
@@ -98,7 +98,7 @@
         Turtle and NFT earning Contract:
       </p>
       <p class="mt-2">
-        Each NFT locked with 35,000 Turtle (number could change down, but not up) will earn 10 Turtle a day, calculated per day. This is a maximum of 38,781,250 million turtle emissions annually, first year, if max supply token and NFT were staked. This will never happen with the community owned assets and liquidity pools. At the end of each year and/or end of mint, we will adjust the emissions rate up or down based on remaining emissions from the previous year and community earnings from royalties and fees. The rates must be adjusted to always maintain an expected 3 year supply of emissions. Until the collection mints out, it is for testing to maintain sustainability and give instant rewards to holders.
+        Each NFT locked with 35,000 Turtle will earn 10 Turtle a day, a steady 10.29% annual return (excluding NFT cost). Calculated per day. This number can adjust but not exceed 10. This is a maximum of 38,781,250 million turtle emissions annually, first year, if max supply token and NFT were staked. This will never happen with the community owned assets and liquidity pools. At the end of each year and/or end of mint, we will adjust the emissions rate up or down based on remaining emissions from the previous year and community earnings from royalties and fees. The rates must be adjusted to always maintain an expected 3 year supply of emissions. Until the collection mints out, it is for testing to maintain sustainability and give instant rewards to holders.
       </p>
       <p class="subheader-text text-primary mt-4">
         NFT Royalties:
@@ -117,7 +117,7 @@
             2000 minted: Reveal images (Completed)
           </li>
           <li>
-            Approximately $1500 raised in CRO we will initiate earning contract
+            Approximately $1500 raised in CRO we will initiate earning contract. (Completed)
           </li>
           <li>
             6500 minted: Start DAO contract
