@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     public: {
       appUrl: '',
       walletConnectId: 'd597fb2c81b43b56bb52a248de3cbca2',
+      nftApiUrl: process.env.NFT_API_URL || 'http://localhost:3000',
     },
   },
   build: {

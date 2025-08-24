@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="footer-wrapper">
-      <div nclass="logo-wrapper">
+      <div class="logo-wrapper">
         <img
           src="/logo.jpg"
           class="logo"

@@ -86,7 +86,7 @@
             </v-card-title>
             <v-card-text>
               <p>
-                The first liquidity pool was vaulted and the keys burned. The community now has over many active LPs, and is trading on 4 decentralized exchanges. Adding your own liquidity is encouraged and helps decentralization, stability, and longterm growth.
+                The first liquidity pool was vaulted and the keys burned. The community now has many active LPs, and is trading on 5 decentralized exchanges. Adding your own liquidity is encouraged and helps decentralization, stability, and longterm growth.
               </p>
             </v-card-text>
           </v-card>

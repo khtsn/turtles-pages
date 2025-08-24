@@ -47,7 +47,7 @@
         Turtle Overview:
       </p>
       <p class="mt-2">
-        We now have many trading pairs. All have burned liquidity. We would like our main CRO liquidity pool on VVS Finance to be much bigger than our MMF pool to reduce the impact on trades, and with a minimum amount of burned 80% liquidity. It is approximately 25% bigFger than MMF now. It will be done slowly over time with funds allocated from NFTS.<br>
+        We now have many trading pairs. All have burned liquidity. We would like our main CRO liquidity pool on VVS Finance to be much bigger than our MMF pool to reduce the impact on trades, and with a minimum amount of burned 80% liquidity. It is approximately 25% bigger than MMF now. It will be done slowly over time with funds allocated from NFTS.<br>
         We will also set aside treasury funds for future CEX listings and/or development in the community vault.<br>
         Any funds in the vault that are to be used for growth and development will be voted by the community Dao formed through NFT ownership before spending.<br>
         Our first goals as a community will be coin gecko and CMC listings. As a CTO, we have a new X page, website, and Dexscreener paid for. The NFTs will introduce a way to earn Turtle with a FIXED rate, adjustable every year.<br>
@@ -84,16 +84,16 @@
         6000-public mint at 180 CRO.
         <br><br>
         Broken down in percentages below, this is how the funds from public minting plan to be allocated. Depending on the speed of minting process, funds will not be removed from mint contract until they reach minimum even numbers for easy division. IE:$1000, $5000, $10,000 increments.
-        <ul>
-          <li>
-            25% of mint funds go to team. This covers entire cost of CTO to date, existing burned liquidity, existing turtle allocated for staking, existing turtle owned by community DAO vault, dev costs to launch NFTs, DAO contracts, website mint upgrades, artist, and unexpected miscellaneous costs regarding CTO, NFT launch, plan and execution. None of this is profit. It is actually negative if you add it up individually.
-          </li>
-          <li>20% of mint funds will be minting incentives and community collaborations during mint. IE: Purchase of partner / supportive community's and collaborations, $CRO rewards, NFT rewards.</li>
-          <li>25% of mint funds go to community treasury to build the turtle brand. This will be used to increase exposure to turtle memecoin and turtle NFTs and cover any monthly, yearly expenses. Community Dao will control any major decisions on this. Turtle Treasury Advisor will act as community voice. Unused funds will be staked and validated in CRO or in Stable liquidity pools by community vault to earn monthly for the community, growth, and monthly income for community rather than stagnant funds. Until DAO votes otherwise.</li>
-          <li>5% direct buybacks of turtle off market</li>
-          <li>25% for liquidity to be burned, and combined with turtle allocation of mint. Number could fluctuate up if 2625 turtle minting allocation does not max out. In this scenario, any extra minted would be used for buyback of Turtle. Once CRO VVS Finance pool reaches desired size, some of remainder can be used to make sure all remaining pools supported in collection are closest to $1000 minimum as possible. Then, grow core blue-chip pools burned liquidity. IE:USDC, WETH, WBTC</li>
-        </ul>
       </p>
+      <ul>
+        <li>
+          25% of mint funds go to team. This covers entire cost of CTO to date, existing burned liquidity, existing turtle allocated for staking, existing turtle owned by community DAO vault, dev costs to launch NFTs, DAO contracts, website mint upgrades, artist, and unexpected miscellaneous costs regarding CTO, NFT launch, plan and execution. None of this is profit. It is actually negative if you add it up individually.
+        </li>
+        <li>20% of mint funds will be minting incentives and community collaborations during mint. IE: Purchase of partner / supportive community's and collaborations, $CRO rewards, NFT rewards.</li>
+        <li>25% of mint funds go to community treasury to build the turtle brand. This will be used to increase exposure to turtle memecoin and turtle NFTs and cover any monthly, yearly expenses. Community Dao will control any major decisions on this. Turtle Treasury Advisor will act as community voice. Unused funds will be staked and validated in CRO or in Stable liquidity pools by community vault to earn monthly for the community, growth, and monthly income for community rather than stagnant funds. Until DAO votes otherwise.</li>
+        <li>5% direct buybacks of turtle off market</li>
+        <li>25% for liquidity to be burned, and combined with turtle allocation of mint. Number could fluctuate up if 2625 turtle minting allocation does not max out. In this scenario, any extra minted would be used for buyback of Turtle. Once CRO VVS Finance pool reaches desired size, some of remainder can be used to make sure all remaining pools supported in collection are closest to $1000 minimum as possible. Then, grow core blue-chip pools burned liquidity. IE:USDC, WETH, WBTC</li>
+      </ul>
       <p class="subheader-text text-primary mt-4">
         Turtle and NFT earning Contract:
       </p>
@@ -111,23 +111,21 @@
       <p class="subheader-text text-primary mt-4">
         Major Minting Targets:
       </p>
-      <p class="mt-2">
-        <ul>
-          <li>
-            2000 minted: Reveal images (Completed)
-          </li>
-          <li>
-            Approximately $1500 raised in CRO we will initiate earning contract. (Completed)
-          </li>
-          <li>
-            6500 minted: Start DAO contract
-          </li>
-        </ul>
+      <ul class="mt-2">
+        <li>
+          2000 minted: Reveal images (Completed)
+        </li>
+        <li>
+          Approximately $1500 raised in CRO we will initiate earning contract. (Completed)
+        </li>
+        <li>
+          6500 minted: Start DAO contract
+        </li>
+      </ul>
 
-        Once earning contract is launched, the first withdrawals will take place in even increments as mention above and allocated according to schedule. Funds will start to be distributed according to plan, and minting incentives will start.
-        <br><br>
-        Disclaimer: This is a base plan starting point. The space is evolving fast. If we have to pivot during mint to maintain relevancy it will be discussed with community first. If you have any questions or concerns reach out to the team directly.
-      </p>
+      Once earning contract is launched, the first withdrawals will take place in even increments as mention above and allocated according to schedule. Funds will start to be distributed according to plan, and minting incentives will start.
+      <br><br>
+      Disclaimer: This is a base plan starting point. The space is evolving fast. If we have to pivot during mint to maintain relevancy it will be discussed with community first. If you have any questions or concerns reach out to the team directly.
     </v-container>
   </div>
 </template>

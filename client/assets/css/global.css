@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1366px) {
     .content-container {
         padding: 0 1rem !important;
     }

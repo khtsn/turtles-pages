@@ -192,7 +192,7 @@
         Neuro
       </p>
       <p class="mt-2">
-        The Turtle community teamed up with CroFomo, another memecoin on Cronos. We each donated equal amounts to the liquidity pool and then burned it for life. <span
+        The Turtle community teamed up with NeurotiCat, another memecoin on Cronos. We each donated equal amounts to the liquidity pool and then burned it for life. <span
           class="custom-link"
           @click="openNewTab('https://x.com/neuroticatcro')"
         >Visit X Profile</span>

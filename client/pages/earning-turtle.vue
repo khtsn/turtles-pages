@@ -32,12 +32,6 @@
         <b>Daily earning rate:</b> {{ dailyEarningRate }} TURTLE per NFT<br>
         <b>Withdrawal fee (less than 24h):</b> {{ first24hFee }} CRO<br>
         <b>Withdrawal fee (less than 72h):</b> {{ first72hFee }} CRO<br>
-        <b v-if="eip155Account.isConnected">Connected wallet address:</b> {{ eip155Account.address }}
-        <a
-          v-if="eip155Account.isConnected"
-          href="#"
-          @click="disconnect()"
-        >[Disconnect wallet]</a>
       </p>
 
       <v-row
@@ -101,15 +95,8 @@
         v-else
         class="mt-4"
       >
-        <v-col>
-          <v-btn
-            flat
-            size="large"
-            class="custom-button"
-            @click="open"
-          >
-            Connect wallet
-          </v-btn>
+        <v-col class="text-center">
+          <p>Please connect your wallet using the header to access earning features.</p>
         </v-col>
       </v-row>
 
@@ -184,7 +171,6 @@ useHead({
 })
 
 const { notifySuccess, notifyError } = useSnackbar()
-const { open, disconnect } = useContract()
 const processing = ref(false)
 const eip155Account = useAppKitAccount({ namespace: 'eip155' })
 const transactionHash = ref(false)
