@@ -2108,23 +2108,6 @@
   resolved "https://registry.yarnpkg.com/@poppinss/exception/-/exception-1.2.1.tgz#8a5f2120fabb64a99772166d537d8a97490209ff"
   integrity sha512-aQypoot0HPSJa6gDPEPTntc1GT6QINrSbgRlRhadGW2WaYqUK3tK4Bw9SBMZXhmxd3GeAlZjVcODHgiu+THY7A==
 
-"@reown/appkit-adapter-ethers5@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@reown/appkit-adapter-ethers5/-/appkit-adapter-ethers5-1.7.3.tgz#77684480b74a162306ca2cf5af5c21ec5554831b"
-  integrity sha512-FHNNwPyKu462Ad7UCxiQSb3Ar+yO4UwnVe6vah0esaSj3gge9e9dZMTOAZkN6mNLLcHtzXF9rdHGQLHsgp3+ew==
-  dependencies:
-    "@reown/appkit" "1.7.3"
-    "@reown/appkit-common" "1.7.3"
-    "@reown/appkit-controllers" "1.7.3"
-    "@reown/appkit-polyfills" "1.7.3"
-    "@reown/appkit-scaffold-ui" "1.7.3"
-    "@reown/appkit-utils" "1.7.3"
-    "@reown/appkit-wallet" "1.7.3"
-    "@walletconnect/universal-provider" "2.19.2"
-    valtio "1.13.2"
-  optionalDependencies:
-    "@coinbase/wallet-sdk" "4.3.0"
-
 "@reown/appkit-adapter-ethers@^1.7.3":
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@reown/appkit-adapter-ethers/-/appkit-adapter-ethers-1.7.3.tgz#5514d1b5d6776443963779b884cfac5ad201bd40"
