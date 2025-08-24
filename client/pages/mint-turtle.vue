@@ -32,16 +32,11 @@
         <b>Max 20 mints per transaction</b><br>
         <b>Mint fee with TURTLES:</b> {{ tokenFee }} TURTLES per NFT<br>
         <b>Mint fee with CRO:</b> {{ nativeFee }} CRO per NFT<br>
-        <b v-if="eip155Account.isConnected">Connected wallet address:</b> {{ eip155Account.address }}
-        <a
-          v-if="eip155Account.isConnected"
-          href="#"
-          @click="disconnect()"
-        >[Disconnect wallet]</a>
+
       </p>
 
-      <v-row class="mt-4">
-        <v-col v-if="eip155Account.isConnected">
+      <v-row v-if="eip155Account.isConnected" class="mt-4">
+        <v-col>
           <v-row>
             <v-col
               cols="12"
@@ -86,15 +81,10 @@
             </p>
           </v-row>
         </v-col>
-        <v-col v-else>
-          <v-btn
-            flat
-            size="large"
-            class="custom-button"
-            @click="open"
-          >
-            Connect wallet
-          </v-btn>
+      </v-row>
+      <v-row v-else class="mt-4">
+        <v-col class="text-center">
+          <p>Please connect your wallet using the header to mint NFTs.</p>
         </v-col>
       </v-row>
     </v-container>
@@ -124,8 +114,7 @@ useHead({
 
 const { notifySuccess, notifyError } = useSnackbar()
 const { approveERC20Token, mintWithERC20Token, mintWithNativeToken,
-  getERC20TokenFee, getNativeTokenFee, open,
-  disconnect } = useContract()
+  getERC20TokenFee, getNativeTokenFee } = useContract()
 const amount = ref(1)
 const processing = ref(false)
 const eip155Account = useAppKitAccount({ namespace: 'eip155' })

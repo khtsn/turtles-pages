@@ -15,9 +15,8 @@
             class="logo"
           >
         </div>
-
         <div class="d-none d-lg-block">
-          <div class="menu-group ">
+          <div class="menu-group">
             <div
               v-for="(item, i) in menus"
               :key="i"
@@ -34,7 +33,31 @@
       </template>
 
       <template #append>
-        <div class="d-flex d-sm-none">
+        <div class="d-none d-lg-block">
+          <v-btn
+            v-if="!eip155Account.isConnected"
+            flat
+            class="custom-button"
+            @click="open"
+          >
+            Connect Wallet
+          </v-btn>
+          <div
+            v-else
+            class="wallet-info"
+          >
+            <span class="wallet-address">{{ formatAddress(eip155Account.address) }}</span>
+            <v-btn
+              flat
+              size="small"
+              class="ml-2"
+              @click="disconnect"
+            >
+              Disconnect
+            </v-btn>
+          </div>
+        </div>
+        <div class="d-flex d-lg-none">
           <v-btn
             icon="mdi-menu"
             @click.stop="drawer = !drawer"
@@ -52,10 +75,38 @@
         density="compact"
         nav
       >
+        <v-list-item v-if="!eip155Account.isConnected">
+          <v-btn
+            flat
+            class="custom-button w-100"
+            @click="open"
+          >
+            Connect Wallet
+          </v-btn>
+        </v-list-item>
+        <v-list-item v-else>
+          <div class="mobile-wallet-info">
+            <div class="wallet-address mb-2">
+              {{ formatAddress(eip155Account.address) }}
+            </div>
+            <v-btn
+              flat
+              size="small"
+              class="w-100"
+              @click="disconnect"
+            >
+              Disconnect
+            </v-btn>
+          </div>
+        </v-list-item>
+        <v-divider
+          v-if="eip155Account.isConnected || !eip155Account.isConnected"
+          class="my-2"
+        />
         <v-list-item
           v-for="(item, i) in menus"
           :key="i"
-          :title="item.title"
+          :title="item.mobile_title || item.title"
           :href="item?.href"
           link
         />
@@ -65,14 +116,24 @@
 </template>
 
 <script setup>
+import { useAppKitAccount } from '@reown/appkit/vue'
+
 const { pushTo } = useNavigation()
+const { open, disconnect } = useContract()
+const eip155Account = useAppKitAccount({ namespace: 'eip155' })
 
 const drawer = ref(false)
+
+const formatAddress = (address) => {
+  if (!address) return ''
+  return `${address.slice(0, 6)}...${address.slice(-4)}`
+}
 const menus = reactive([
   {
-    title: 'Dexscreener Links',
-    to: '/dexscreener',
-    href: '/dexscreener',
+    title: 'Links',
+    mobile_title: 'Dexscreener Links',
+    to: '/links',
+    href: '/links',
   },
   {
     title: 'Buy Turtle',
@@ -104,6 +165,16 @@ const menus = reactive([
     to: '/mint-turtle',
     href: '/mint-turtle',
   },
+  {
+    title: 'Earning Turtle',
+    to: '/earning-turtle',
+    href: '/earning-turtle',
+  },
+  {
+    title: 'NFT Generator',
+    to: '/generator',
+    href: '/generator',
+  },
 ])
 </script>
 
@@ -132,5 +203,32 @@ const menus = reactive([
 
 .menu:hover {
   color: rgb(var(--v-theme-primary));
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+}
+
+.wallet-address {
+  font-size: 0.875rem;
+  color: rgb(var(--v-theme-surface));
+  font-weight: 500;
+}
+
+.custom-button {
+  background-color: rgb(var(--v-theme-primary));
+  color: white;
+}
+
+.mobile-wallet-info {
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-wallet-info .wallet-address {
+  font-size: 0.875rem;
+  color: rgb(var(--v-theme-primary));
+  font-weight: 500;
 }
 </style>

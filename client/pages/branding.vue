@@ -35,6 +35,11 @@
             alt="brand-h5"
             class="brand-img"
           >
+          <img
+            src="/meme-head.png"
+            alt="brand-h5"
+            class="brand-img"
+          >
         </div>
       </v-row>
 
@@ -43,7 +48,7 @@
       </p>
       <div class="text-center mt-2">
         <img
-          src="/banner.jpg"
+          src="/mint-banner.jpg"
           alt="banner"
           class="banner-img"
         >
@@ -94,6 +99,6 @@ useHead({
 }
 
 .brand-img {
-  max-width: 20%;
+  max-width: 25%;
 }
 </style>
