@@ -383,13 +383,20 @@ const downloadImage = () => {
   const imageToDownload = mixedImage.value || selectedNFT.value?.image
   if (!imageToDownload) return
 
-  const link = document.createElement('a')
-  const filename = selectedOverlay.value
-    ? `mixed-nft-${selectedNFT.value.tokenId}-${selectedOverlay.value.id}.png`
-    : `nft-${selectedNFT.value.tokenId}.png`
-  link.download = filename
-  link.href = imageToDownload
-  link.click()
+  if (imageToDownload.startsWith('data:')) {
+    const newTab = window.open('', '_blank')
+    newTab.document.write(`
+      <html>
+        <body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:transparent;">
+          <img src="${imageToDownload}" style="max-width:100%;max-height:100%;object-fit:contain;" />
+        </body>
+      </html>
+    `)
+    newTab.document.close()
+  }
+  else {
+    window.open(imageToDownload, '_blank')
+  }
 }
 
 onMounted(() => {
