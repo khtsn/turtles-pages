@@ -384,15 +384,17 @@ const downloadImage = () => {
   if (!imageToDownload) return
 
   if (imageToDownload.startsWith('data:')) {
-    const newTab = window.open('', '_blank')
-    newTab.document.write(`
-      <html>
-        <body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:transparent;">
-          <img src="${imageToDownload}" style="max-width:100%;max-height:100%;object-fit:contain;" />
-        </body>
-      </html>
-    `)
-    newTab.document.close()
+    // Convert base64 to blob for better browser compatibility
+    const byteString = atob(imageToDownload.split(',')[1])
+    const mimeString = imageToDownload.split(',')[0].split(':')[1].split(';')[0]
+    const ab = new ArrayBuffer(byteString.length)
+    const ia = new Uint8Array(ab)
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i)
+    }
+    const blob = new Blob([ab], { type: mimeString })
+    const blobUrl = URL.createObjectURL(blob)
+    window.open(blobUrl, '_blank')
   }
   else {
     window.open(imageToDownload, '_blank')
