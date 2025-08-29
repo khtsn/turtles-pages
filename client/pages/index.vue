@@ -277,7 +277,30 @@
       <v-row>
         <v-col
           cols="12"
-          md="6"
+          md="4"
+        >
+          <v-card
+            variant="outlined"
+            class="resource-card"
+            @click="openNewTab('https://www.coingecko.com/en/coins/turtle-2')"
+          >
+            <v-card-text>
+              <div class="text-center">
+                <img
+                  src="/coingecko.png"
+                  alt="logo"
+                  class="source-logo"
+                >
+                <p class="subheader-text mt-4">
+                  CoinGecko
+                </p>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col
+          cols="12"
+          md="4"
         >
           <v-card
             variant="outlined"
@@ -300,7 +323,7 @@
         </v-col>
         <v-col
           cols="12"
-          md="6"
+          md="4"
         >
           <v-card
             variant="outlined"
