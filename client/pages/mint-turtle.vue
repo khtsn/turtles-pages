@@ -165,7 +165,6 @@ const submitMintNative = async () => {
     const fee = await getNativeTokenFee(provider)
     const tx = await mintWithNativeToken(signer, fee, amount.value)
     const receipt = await tx.wait()
-    console.log(receipt)
     transactionHash.value = receipt.hash
 
     processing.value = false
