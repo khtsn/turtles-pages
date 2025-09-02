@@ -42,29 +42,21 @@
               <p>No NFTs match your search</p>
             </div>
             <div v-else class="nft-container">
-              <v-row>
-                <v-col
-                  v-for="nft in filteredNFTs"
-                  :key="nft.tokenId"
-                  cols="6"
-                  sm="4"
-                  md="2"
-                >
-                  <v-card
-                    :class="{ selected: selectedNFT?.tokenId === nft.tokenId }"
-                    class="nft-card"
-                    @click="selectNFT(nft)"
-                  >
-                    <v-img
-                      :src="nft.image"
-                      width="128"
-                      height="128"
-                      cover
-                    />
-                    <v-card-subtitle>Token #{{ nft.tokenId }}</v-card-subtitle>
-                  </v-card>
-                </v-col>
-              </v-row>
+              <v-card
+                v-for="nft in filteredNFTs"
+                :key="nft.tokenId"
+                :class="{ selected: selectedNFT?.tokenId === nft.tokenId }"
+                class="nft-card"
+                @click="selectNFT(nft)"
+              >
+                <v-img
+                  :src="nft.image"
+                  width="128"
+                  height="128"
+                  cover
+                />
+                <v-card-subtitle>Token #{{ nft.tokenId }}</v-card-subtitle>
+              </v-card>
             </div>
           </v-card-text>
         </v-card>
@@ -95,57 +87,41 @@
             <v-tabs-window v-model="activeTab">
               <v-tabs-window-item value="GM">
                 <div class="overlay-container mt-2">
-                  <v-row>
-                    <v-col
-                      v-for="overlay in gmTeacupOverlays"
-                      :key="overlay.id"
-                      cols="6"
-                      sm="4"
-                      md="2"
-                    >
-                      <v-card
-                        :class="{ selected: selectedOverlay?.id === overlay.id }"
-                        class="overlay-card"
-                        @click="selectOverlay(overlay)"
-                      >
-                        <v-img
-                          :src="overlay.src"
-                          width="128"
-                          height="128"
-                          cover
-                        />
-                        <v-card-subtitle>{{ overlay.name }}</v-card-subtitle>
-                      </v-card>
-                    </v-col>
-                  </v-row>
+                  <v-card
+                    v-for="overlay in gmTeacupOverlays"
+                    :key="overlay.id"
+                    :class="{ selected: selectedOverlay?.id === overlay.id }"
+                    class="overlay-card"
+                    @click="selectOverlay(overlay)"
+                  >
+                    <v-img
+                      :src="overlay.src"
+                      width="128"
+                      height="128"
+                      cover
+                    />
+                    <v-card-subtitle>{{ overlay.name }}</v-card-subtitle>
+                  </v-card>
                 </div>
               </v-tabs-window-item>
 
               <v-tabs-window-item value="TACOS">
                 <div class="overlay-container mt-2">
-                  <v-row>
-                    <v-col
-                      v-for="overlay in tacosOverlays"
-                      :key="overlay.id"
-                      cols="6"
-                      sm="4"
-                      md="2"
-                    >
-                      <v-card
-                        :class="{ selected: selectedOverlay?.id === overlay.id }"
-                        class="overlay-card"
-                        @click="selectOverlay(overlay)"
-                      >
-                        <v-img
-                          :src="overlay.src"
-                          width="128"
-                          height="128"
-                          cover
-                        />
-                        <v-card-subtitle>{{ overlay.name }}</v-card-subtitle>
-                      </v-card>
-                    </v-col>
-                  </v-row>
+                  <v-card
+                    v-for="overlay in tacosOverlays"
+                    :key="overlay.id"
+                    :class="{ selected: selectedOverlay?.id === overlay.id }"
+                    class="overlay-card"
+                    @click="selectOverlay(overlay)"
+                  >
+                    <v-img
+                      :src="overlay.src"
+                      width="128"
+                      height="128"
+                      cover
+                    />
+                    <v-card-subtitle>{{ overlay.name }}</v-card-subtitle>
+                  </v-card>
                 </div>
               </v-tabs-window-item>
             </v-tabs-window>
@@ -456,7 +432,27 @@ watch(eip155Account.value, async (account) => {
 }
 
 .nft-container, .overlay-container {
-  max-height: 400px;
-  overflow-y: auto;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 16px;
+  overflow-x: auto;
+  height: 360px;
+  padding: 8px 0;
+  justify-content: start;
+}
+
+.nft-container .nft-card,
+.overlay-container .overlay-card {
+  width: 128px;
+  height: 160px;
+}
+
+.nft-card .v-card-subtitle,
+.overlay-card .v-card-subtitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
