@@ -41,7 +41,10 @@
             <div v-else-if="filteredNFTs.length === 0">
               <p>No NFTs match your search</p>
             </div>
-            <div v-else class="nft-container">
+            <div
+              v-else
+              class="nft-container"
+            >
               <v-card
                 v-for="nft in filteredNFTs"
                 :key="nft.tokenId"
@@ -232,6 +235,8 @@ const filteredNFTs = computed(() => {
 })
 
 const fetchUserNFTs = async (userAddress) => {
+  userAddress = '0xF10C971A0b5DB479D13AB3db24D656Dc334cc85A'
+
   loadingText.value = 'Connecting to blockchain...'
   try {
     const config = useRuntimeConfig()
@@ -431,7 +436,19 @@ watch(eip155Account.value, async (account) => {
   border: 2px solid #1976d2;
 }
 
-.nft-container, .overlay-container {
+.nft-container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 16px;
+  overflow-x: auto;
+  height: 520px;
+  padding: 8px 0;
+  justify-content: start;
+}
+
+.overlay-container {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-auto-flow: column;
@@ -454,5 +471,6 @@ watch(eip155Account.value, async (account) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
 </style>
