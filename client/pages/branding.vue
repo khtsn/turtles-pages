@@ -55,7 +55,7 @@
       </div>
       <div class="text-center mt-2">
         <img
-          src="/brand-h6.jpg"
+          src="/brand-h6.png"
           alt="banner"
           class="banner-img"
         >
