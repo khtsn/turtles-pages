@@ -235,8 +235,6 @@ const filteredNFTs = computed(() => {
 })
 
 const fetchUserNFTs = async (userAddress) => {
-  userAddress = '0xF10C971A0b5DB479D13AB3db24D656Dc334cc85A'
-
   loadingText.value = 'Connecting to blockchain...'
   try {
     const config = useRuntimeConfig()
