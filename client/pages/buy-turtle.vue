@@ -35,7 +35,7 @@
         <a href="https://app.ebisusbay.com/dex/swap?outputCurrency=0x8C9E2bEf2962CE302ef578113eebEc62920B7e57">Ebisus Bay</a><br>
         <a href="https://obsidian.finance/?outputCurrency=0x8C9E2bEf2962CE302ef578113eebEc62920B7e57">Obsidian Finance</a><br>
         <a href="https://swap.doonft.com/?output=0x8c9e2bef2962ce302ef578113eebec62920b7e57&chain=25">DooSwap</a><br>
-        <a href="https://wolfswap.app/swap?chainId=25&sellToken=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&buyToken=0x8c9e2bef2962ce302ef578113eebec62920b7e57">DooSwap</a><br>
+        <a href="https://wolfswap.app/swap?chainId=25&sellToken=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&buyToken=0x8c9e2bef2962ce302ef578113eebec62920b7e57">WolfSwap</a><br>
       </p>
       <p class="mt-2">
         <b>Turtles NFT Secondary:</b><br>
