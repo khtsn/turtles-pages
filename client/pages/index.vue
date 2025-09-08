@@ -371,7 +371,7 @@
             <v-card-text>
               <div class="text-center">
                 <img
-                  src="https://defillama.com/icons/defillama-dark.webp"
+                  src="/defillama-dark.webp"
                   alt="logo"
                   class="source-logo"
                 >
