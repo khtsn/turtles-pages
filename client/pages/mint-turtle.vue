@@ -28,14 +28,17 @@
       </v-row>
       <p>
         <b>Max supply:</b> 10,625<br>
+        <b>Total minted:</b> {{ totalMinted }}<br>
         <b>CA:</b> 0x2baa455e573df4019b11859231dd9e425d885293<br>
         <b>Max 20 mints per transaction</b><br>
         <b>Mint fee with TURTLES:</b> {{ tokenFee }} TURTLES per NFT<br>
         <b>Mint fee with CRO:</b> {{ nativeFee }} CRO per NFT<br>
-
       </p>
 
-      <v-row v-if="eip155Account.isConnected" class="mt-4">
+      <v-row
+        v-if="eip155Account.isConnected"
+        class="mt-4"
+      >
         <v-col>
           <v-row>
             <v-col
@@ -82,7 +85,10 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row v-else class="mt-4">
+      <v-row
+        v-else
+        class="mt-4"
+      >
         <v-col class="text-center">
           <p>Please connect your wallet using the header to mint NFTs.</p>
         </v-col>
@@ -114,13 +120,14 @@ useHead({
 
 const { notifySuccess, notifyError } = useSnackbar()
 const { approveERC20Token, mintWithERC20Token, mintWithNativeToken,
-  getERC20TokenFee, getNativeTokenFee } = useContract()
+  getERC20TokenFee, getNativeTokenFee, getTotalSupply } = useContract()
 const amount = ref(1)
 const processing = ref(false)
 const eip155Account = useAppKitAccount({ namespace: 'eip155' })
 const transactionHash = ref(false)
 const nativeFee = ref(0)
 const tokenFee = ref(0)
+const totalMinted = ref(0)
 
 watch(eip155Account.value, async (account) => {
   if (account.isConnected) {
@@ -128,6 +135,7 @@ watch(eip155Account.value, async (account) => {
     const provider = new BrowserProvider(walletProvider)
     nativeFee.value = ethers.formatEther(await getNativeTokenFee(provider))
     tokenFee.value = ethers.formatEther(await getERC20TokenFee(provider))
+    totalMinted.value = await getTotalSupply(provider)
   }
 })
 
@@ -144,6 +152,9 @@ const submitMintERC20 = async () => {
     const tx2 = await mintWithERC20Token(signer, amount.value)
     const receipt = await tx2.wait()
     transactionHash.value = receipt.hash
+
+    // Update total minted count
+    totalMinted.value = await getTotalSupply(provider)
 
     processing.value = false
     notifySuccess('Minted successfully!')
@@ -166,6 +177,9 @@ const submitMintNative = async () => {
     const tx = await mintWithNativeToken(signer, fee, amount.value)
     const receipt = await tx.wait()
     transactionHash.value = receipt.hash
+
+    // Update total minted count
+    totalMinted.value = await getTotalSupply(provider)
 
     processing.value = false
     notifySuccess('Minted successfully!')
