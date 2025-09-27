@@ -85,6 +85,9 @@
               <v-tab value="TACOS">
                 TACOS
               </v-tab>
+              <v-tab value="SUIT">
+                SUIT
+              </v-tab>
             </v-tabs>
 
             <v-tabs-window v-model="activeTab">
@@ -112,6 +115,26 @@
                 <div class="overlay-scroll-container mt-2">
                   <v-card
                     v-for="overlay in tacosOverlays"
+                    :key="overlay.id"
+                    :class="{ selected: selectedOverlay?.id === overlay.id }"
+                    class="overlay-card"
+                    @click="selectOverlay(overlay)"
+                  >
+                    <v-img
+                      :src="overlay.src"
+                      width="128"
+                      height="128"
+                      cover
+                    />
+                    <v-card-subtitle>{{ overlay.name }}</v-card-subtitle>
+                  </v-card>
+                </div>
+              </v-tabs-window-item>
+
+              <v-tabs-window-item value="SUIT">
+                <div class="overlay-scroll-container mt-2">
+                  <v-card
+                    v-for="overlay in suitOverlays"
                     :key="overlay.id"
                     :class="{ selected: selectedOverlay?.id === overlay.id }"
                     class="overlay-card"
@@ -227,6 +250,10 @@ const tacosOverlays = computed(() =>
   overlays.value.filter(o => o.category === 'TACOS'),
 )
 
+const suitOverlays = computed(() =>
+  overlays.value.filter(o => o.category === 'SUIT'),
+)
+
 const filteredNFTs = computed(() => {
   if (!searchTokenId.value) return nfts.value
   return nfts.value.filter(nft =>
@@ -270,7 +297,7 @@ const loadOverlays = () => {
   // GM (28)
   for (let i = 1; i <= 28; i++) {
     overlays.push({
-      id: i,
+      id: `GM${i}`,
       name: `GM ${i}`,
       category: 'GM',
       src: `/overlays/GM/gm${i}.png`,
@@ -280,10 +307,20 @@ const loadOverlays = () => {
   // TACOS (28)
   for (let i = 1; i <= 28; i++) {
     overlays.push({
-      id: i,
+      id: `TACOS${i}`,
       name: `TACOS ${i}`,
       category: 'TACOS',
       src: `/overlays/Taco/taco${i}.png`,
+    })
+  }
+
+  // SUIT (2)
+  for (let i = 1; i <= 2; i++) {
+    overlays.push({
+      id: `SUIT${i}`,
+      name: `SUIT ${i}`,
+      category: 'SUIT',
+      src: `/overlays/Suit/suit${i}.png`,
     })
   }
 

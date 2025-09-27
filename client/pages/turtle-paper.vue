@@ -69,19 +69,19 @@
         150 Admin mint Cryptodaave<br>
         150 Admin mint DarkmindofL<br>
         1200 Admin Mint airdrops to early registered wallets, top 200 Turtle token holders, CamelsNFT holders with 4 or more, and Camels 3D holders with 2 or more. Completed on May 3, 2025. Some remain throughout mint.<br>
-        2625 mints maximum at a 150,000 Turtle mint cost. UPDATED JULY 31 from 200,000 Turtle.<br>
-        6000 public paid mints x 180 CRO. UPDATED JULY 31 from 240 CRO.<br>
+        2625 mints maximum at a 150,000 Turtle mint cost. UPDATED AUGUST 29 FROM 150,000 Turtle.<br>
+        6000 public paid mints x 120 CRO. UPDATED SEPTEMBER 22 FROM 90 CRO.<br>
         <br>
-        Minters still holding their assets after July 31 reduction announcement are eligible for NFT credit by reaching out through official socials. 1 airdropped NFT for every 3 previously minted.
+        Minters still holding their assets after August 29 reduction announcement are eligible for NFT credit by reaching out through official socials. Credits are in CRO and reimbursed through airdropped NFTs.
       </p>
       <p class="subheader-text text-primary mt-4">
         Turtle NFT Cost and Fund Allocation:
       </p>
       <p class="mt-2">
-        2625-public mint at cost of 150,000. This is to reward, thin out wallets of long term holders, and bring some chart stability.<br>
+        2625-public mint at cost of 100,000. This is to reward, thin out wallets of long term holders, and bring some chart stability.<br>
         Turtle will be only used towards burned liquidity and earnings contracts. We have 3 years supply of earning contracts pre mint. Liquidity burning will be the first focus.
         <br><br>
-        6000-public mint at 180 CRO.
+        6000-public mint at 120 CRO.
         <br><br>
         Broken down in percentages below, this is how the funds from public minting plan to be allocated. Depending on the speed of minting process, funds will not be removed from mint contract until they reach minimum even numbers for easy division. IE:$1000, $5000, $10,000 increments.
       </p>
