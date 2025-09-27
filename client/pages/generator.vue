@@ -43,7 +43,7 @@
             </div>
             <div
               v-else
-              class="nft-scroll-container"
+              class="nft-container"
             >
               <v-card
                 v-for="nft in filteredNFTs"
@@ -92,7 +92,7 @@
 
             <v-tabs-window v-model="activeTab">
               <v-tabs-window-item value="GM">
-                <div class="overlay-scroll-container mt-2">
+                <div class="overlay-container mt-2">
                   <v-card
                     v-for="overlay in gmTeacupOverlays"
                     :key="overlay.id"
@@ -112,7 +112,7 @@
               </v-tabs-window-item>
 
               <v-tabs-window-item value="TACOS">
-                <div class="overlay-scroll-container mt-2">
+                <div class="overlay-container mt-2">
                   <v-card
                     v-for="overlay in tacosOverlays"
                     :key="overlay.id"
@@ -421,15 +421,17 @@ const downloadImage = () => {
   if (!imageToDownload) return
 
   if (imageToDownload.startsWith('data:')) {
-    const newTab = window.open('', '_blank')
-    newTab.document.write(`
-      <html>
-        <body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:transparent;">
-          <img src="${imageToDownload}" style="max-width:100%;max-height:100%;object-fit:contain;" />
-        </body>
-      </html>
-    `)
-    newTab.document.close()
+    // Convert base64 to blob for better browser compatibility
+    const byteString = atob(imageToDownload.split(',')[1])
+    const mimeString = imageToDownload.split(',')[0].split(':')[1].split(';')[0]
+    const ab = new ArrayBuffer(byteString.length)
+    const ia = new Uint8Array(ab)
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i)
+    }
+    const blob = new Blob([ab], { type: mimeString })
+    const blobUrl = URL.createObjectURL(blob)
+    window.open(blobUrl, '_blank')
   }
   else {
     window.open(imageToDownload, '_blank')
@@ -460,19 +462,6 @@ watch(eip155Account.value, async (account) => {
   transition: all 0.3s;
 }
 
-.overlay-scroll-container, .nft-scroll-container {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 8px 0;
-}
-
-.overlay-scroll-container .overlay-card,
-.nft-scroll-container .nft-card {
-  flex-shrink: 0;
-  width: 128px;
-}
-
 .nft-card:hover, .overlay-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -480,5 +469,43 @@ watch(eip155Account.value, async (account) => {
 
 .selected {
   border: 2px solid #1976d2;
+}
+
+.nft-container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 16px;
+  overflow-x: auto;
+  height: 520px;
+  padding: 8px 0;
+  justify-content: start;
+}
+
+.overlay-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 16px;
+  overflow-x: auto;
+  height: 360px;
+  padding: 8px 0;
+  justify-content: start;
+}
+
+.nft-container .nft-card,
+.overlay-container .overlay-card {
+  width: 128px;
+  height: 160px;
+}
+
+.nft-card .v-card-subtitle,
+.overlay-card .v-card-subtitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 </style>

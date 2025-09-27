@@ -277,7 +277,30 @@
       <v-row>
         <v-col
           cols="12"
-          md="6"
+          md="4"
+        >
+          <v-card
+            variant="outlined"
+            class="resource-card"
+            @click="openNewTab('https://www.coingecko.com/en/coins/turtle-2')"
+          >
+            <v-card-text>
+              <div class="text-center">
+                <img
+                  src="/coingecko.png"
+                  alt="logo"
+                  class="source-logo"
+                >
+                <p class="subheader-text mt-4">
+                  CoinGecko
+                </p>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col
+          cols="12"
+          md="4"
         >
           <v-card
             variant="outlined"
@@ -300,7 +323,7 @@
         </v-col>
         <v-col
           cols="12"
-          md="6"
+          md="4"
         >
           <v-card
             variant="outlined"
@@ -316,6 +339,90 @@
                 >
                 <p class="subheader-text mt-4">
                   GeckoTerminal
+                </p>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row class="mt-4">
+        <v-col
+          cols="12"
+          md="8"
+          offset-md="2"
+        >
+          <div class="text-center">
+            <p class="subheader-text mt-2">
+              Tracked on
+            </p>
+          </div>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-card
+            variant="outlined"
+            class="resource-card"
+            @click="openNewTab('https://defillama.com/protocol/turtle')"
+          >
+            <v-card-text>
+              <div class="text-center">
+                <img
+                  src="/defillama-dark.webp"
+                  alt="logo"
+                  class="source-logo"
+                >
+                <p class="subheader-text mt-4">
+                  DefiLlama
+                </p>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-card
+            variant="outlined"
+            class="resource-card"
+            @click="openNewTab('https://coinpaprika.com/coin/turtle-turtle-1/')"
+          >
+            <v-card-text>
+              <div class="text-center">
+                <img
+                  src="https://static.coinpaprika.com/assets/img/cp-logo.svg?rev=1"
+                  alt="logo"
+                  class="source-logo"
+                >
+                <p class="subheader-text mt-4">
+                  CoinPaprika
+                </p>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-card
+            variant="outlined"
+            class="resource-card"
+            @click="openNewTab('https://dappradar.com/dapp/turtle')"
+          >
+            <v-card-text>
+              <div class="text-center">
+                <img
+                  src="/dappradar.png"
+                  alt="logo"
+                  class="source-logo"
+                >
+                <p class="subheader-text mt-4">
+                  DappRadar
                 </p>
               </div>
             </v-card-text>

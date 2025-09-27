@@ -53,6 +53,13 @@
           class="banner-img"
         >
       </div>
+      <div class="text-center mt-2">
+        <img
+          src="/brand-h6.png"
+          alt="banner"
+          class="banner-img"
+        >
+      </div>
 
       <p class="subheader-text text-primary mt-4">
         Logo

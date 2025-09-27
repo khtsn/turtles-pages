@@ -60,12 +60,22 @@ export default function useContract() {
     return result
   }
 
+  const getTotalSupply = async (provider) => {
+    const nft = new Contract(
+      nftContractAddress,
+      nftAbi,
+      provider)
+    const totalSupply = await nft.totalSupply()
+    return Number(totalSupply)
+  }
+
   return {
     approveERC20Token,
     mintWithERC20Token,
     mintWithNativeToken,
     getERC20TokenFee,
     getNativeTokenFee,
+    getTotalSupply,
     disconnect,
     open,
   }
