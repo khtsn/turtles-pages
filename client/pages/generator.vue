@@ -88,6 +88,9 @@
               <v-tab value="SUIT">
                 SUIT
               </v-tab>
+              <v-tab value="BS">
+                Blank Sign
+              </v-tab>
             </v-tabs>
 
             <v-tabs-window v-model="activeTab">
@@ -132,9 +135,29 @@
               </v-tabs-window-item>
 
               <v-tabs-window-item value="SUIT">
-                <div class="overlay-scroll-container mt-2">
+                <div class="overlay-container mt-2">
                   <v-card
                     v-for="overlay in suitOverlays"
+                    :key="overlay.id"
+                    :class="{ selected: selectedOverlay?.id === overlay.id }"
+                    class="overlay-card"
+                    @click="selectOverlay(overlay)"
+                  >
+                    <v-img
+                      :src="overlay.src"
+                      width="128"
+                      height="128"
+                      cover
+                    />
+                    <v-card-subtitle>{{ overlay.name }}</v-card-subtitle>
+                  </v-card>
+                </div>
+              </v-tabs-window-item>
+
+              <v-tabs-window-item value="BS">
+                <div class="overlay-container mt-2">
+                  <v-card
+                    v-for="overlay in bsOverlays"
                     :key="overlay.id"
                     :class="{ selected: selectedOverlay?.id === overlay.id }"
                     class="overlay-card"
@@ -254,6 +277,10 @@ const suitOverlays = computed(() =>
   overlays.value.filter(o => o.category === 'SUIT'),
 )
 
+const bsOverlays = computed(() =>
+  overlays.value.filter(o => o.category === 'BS'),
+)
+
 const filteredNFTs = computed(() => {
   if (!searchTokenId.value) return nfts.value
   return nfts.value.filter(nft =>
@@ -321,6 +348,16 @@ const loadOverlays = () => {
       name: `SUIT ${i}`,
       category: 'SUIT',
       src: `/overlays/Suit/suit${i}.png`,
+    })
+  }
+
+  // BS (28)
+  for (let i = 1; i <= 28; i++) {
+    overlays.push({
+      id: `BS${i}`,
+      name: `Blank Sign ${i}`,
+      category: 'BS',
+      src: `/overlays/BS/blanksign${i}.png`,
     })
   }
 
