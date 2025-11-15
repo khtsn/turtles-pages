@@ -289,22 +289,26 @@ const filteredNFTs = computed(() => {
 })
 
 const fetchUserNFTs = async (userAddress) => {
-  loadingText.value = 'Connecting to blockchain...'
+  loadingText.value = 'Connecting to API...'
   try {
     const config = useRuntimeConfig()
-    const apiUrl = config.public.nftApiUrl || 'http://localhost:3000'
+    const apiUrl = config.public.nftApiUrl || 'http://localhost:8080'
+    const contractAddress = '0x2bAA455e573df4019B11859231Dd9e425D885293'
+    const chainId = 25
+
+    // Fetch user's token IDs
     loadingText.value = 'Fetching your NFTs...'
-    const response = await fetch(`${apiUrl}/nfts/${userAddress}`)
+    const response = await fetch(`${apiUrl}/api/${contractAddress}/${chainId}/tokens?owner=${userAddress}`)
     if (!response.ok) return []
 
     const data = await response.json()
     const fetchedNFTs = []
 
     loadingText.value = 'Processing NFT data...'
-    for (const nft of data.nfts || []) {
+    for (const tokenId of data.tokens || []) {
       fetchedNFTs.push({
-        tokenId: nft.tokenID,
-        image: `https://nft.turtleoncro.com/${parseInt(nft.tokenID) + 1}.png`,
+        tokenId: tokenId,
+        image: `https://nft.turtleoncro.com/${parseInt(tokenId) + 1}.png`,
       })
     }
 
