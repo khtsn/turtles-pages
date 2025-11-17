@@ -149,6 +149,7 @@
 <script setup>
 import { useAppKitAccount, useAppKitProvider } from '@reown/appkit/vue'
 import { ethers, BrowserProvider, Contract } from 'ethers'
+import { onMounted } from 'vue'
 import earningABI from '~/assets/js/earning-contract.json'
 import marketplaceABI from '~/assets/js/marketplace-contract.json'
 import approvalABI from '~/assets/js/approval-contract.json'
@@ -234,6 +235,14 @@ const loadContractData = async (provider) => {
 
 watch(eip155Account.value, async (account) => {
   if (account.isConnected) {
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    await loadContractData(provider)
+  }
+})
+
+onMounted(async () => {
+  if (eip155Account.value.isConnected) {
     const { walletProvider } = useAppKitProvider('eip155')
     const provider = new BrowserProvider(walletProvider)
     await loadContractData(provider)

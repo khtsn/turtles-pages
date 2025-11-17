@@ -213,56 +213,183 @@
           </v-card-text>
         </v-card>
 
-        <!-- Action Buttons -->
-        <v-card class="text-center">
-          <v-card-title class="text-h4">
-            Start Now — It's Live
-          </v-card-title>
+        <!-- Wallet Connection -->
+        <v-card
+          v-if="!eip155Account.isConnected"
+          class="mb-6 text-center"
+        >
           <v-card-text>
-            <v-row class="justify-center">
-              <v-col
-                cols="12"
-                md="4"
+            <p class="text-h6 mb-4">
+              Connect your wallet to interact with the vault
+            </p>
+            <p class="mb-4">
+              Please use the wallet connection button in the header
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <!-- Vault Interface -->
+        <div v-if="eip155Account.isConnected">
+          <!-- Your NFTs -->
+          <v-card class="mb-6">
+            <v-card-title>Your NFTs ({{ userNFTs.length }})</v-card-title>
+            <v-card-text>
+              <div
+                v-if="userNFTs.length > 0"
+                class="nft-grid"
               >
-                <v-btn
-                  size="large"
-                  color="primary"
-                  block
-                  class="mb-2"
+                <v-card
+                  v-for="tokenId in userNFTs"
+                  :key="tokenId"
+                  :class="{ selected: selectedNFTs.includes(tokenId) }"
+                  class="nft-card"
+                  @click="toggleNFTSelection(tokenId)"
                 >
-                  Deposit
-                </v-btn>
-                <p>NFT in, $TURTLE out</p>
-              </v-col>
-              <v-col
-                cols="12"
-                md="4"
+                  <v-card-text class="text-center">
+                    <div>NFT #{{ tokenId }}</div>
+                    <div
+                      v-if="selectedNFTs.includes(tokenId)"
+                      class="selected-indicator"
+                    >
+                      ✓ Selected
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </div>
+              <p v-else>
+                No NFTs found in your wallet
+              </p>
+            </v-card-text>
+          </v-card>
+
+          <!-- Deposit Section -->
+          <v-card class="mb-6">
+            <v-card-title>Deposit NFTs</v-card-title>
+            <v-card-text>
+              <v-alert
+                type="warning"
+                class="mb-4"
               >
+                ⚠️ WARNING: You will permanently lose ownership of selected NFTs. You will receive {{ vaultInfo?.perNFT || '0' }} TURTLE tokens per NFT.
+              </v-alert>
+              <div class="mb-4">
                 <v-btn
-                  size="large"
+                  class="mr-2"
+                  @click="selectBatch(userNFTs, selectedNFTs, 0, 10)"
+                >
+                  Select First 10
+                </v-btn>
+                <v-btn @click="clearSelection()">
+                  Clear All
+                </v-btn>
+              </div>
+              <v-btn
+                v-if="selectedNFTs.length > 0"
+                color="primary"
+                :loading="processing"
+                @click="depositByTokenIds"
+              >
+                Deposit Selected ({{ selectedNFTs.length }})
+              </v-btn>
+              <p v-else>
+                Select NFTs from your collection above to deposit
+              </p>
+            </v-card-text>
+          </v-card>
+
+          <!-- Vault NFTs -->
+          <v-card class="mb-6">
+            <v-card-title>
+              Vault NFTs ({{ vaultNFTs.length }})
+              <v-btn
+                size="small"
+                class="ml-2"
+                @click="loadVaultNFTs"
+              >
+                Refresh
+              </v-btn>
+            </v-card-title>
+            <v-card-text>
+              <div
+                v-if="vaultNFTs.length > 0"
+                class="nft-grid"
+              >
+                <v-card
+                  v-for="tokenId in vaultNFTs"
+                  :key="tokenId"
+                  :class="{ selected: selectedVaultNFTs.includes(tokenId) }"
+                  class="nft-card"
+                  @click="toggleVaultNFTSelection(tokenId)"
+                >
+                  <v-card-text class="text-center">
+                    <div>NFT #{{ tokenId }}</div>
+                    <div
+                      v-if="selectedVaultNFTs.includes(tokenId)"
+                      class="selected-indicator"
+                    >
+                      ✓ Selected
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </div>
+              <p v-else>
+                No NFTs in vault
+              </p>
+            </v-card-text>
+          </v-card>
+
+          <!-- Get NFTs from Vault -->
+          <v-card class="mb-6">
+            <v-card-title>Get NFTs from Vault</v-card-title>
+            <v-card-text>
+              <div class="mb-4">
+                <v-btn
+                  class="mr-2"
+                  @click="selectBatch(vaultNFTs, selectedVaultNFTs, 0, 10)"
+                >
+                  Select First 10
+                </v-btn>
+                <v-btn @click="clearVaultSelection()">
+                  Clear All
+                </v-btn>
+              </div>
+              <div v-if="selectedVaultNFTs.length > 0">
+                <v-card
+                  class="mb-4"
+                  color="grey-lighten-4"
+                >
+                  <v-card-text>
+                    <p><strong>Cost Estimation:</strong></p>
+                    <p>Swap Cost: {{ getSwapCost() }} TURTLE</p>
+                    <p>Purchase Cost: {{ getPurchaseCost() }} CRO</p>
+                  </v-card-text>
+                </v-card>
+                <v-btn
                   color="secondary"
-                  block
-                  class="mb-2"
+                  class="mr-2"
+                  :loading="processing"
+                  @click="swapForNFTs"
                 >
-                  Swap
+                  Swap TURTLE ({{ selectedVaultNFTs.length }})
                 </v-btn>
-                <p>1 NFT + Per NFT fee + 32K $TURTLE → 1 Vault NFT</p>
-              </v-col>
-              <v-col
-                cols="12"
-                md="4"
-              >
                 <v-btn
-                  size="large"
                   color="success"
-                  block
-                  class="mb-2"
+                  :loading="processing"
+                  @click="purchaseWithCRO"
                 >
-                  Buy
+                  Purchase with CRO ({{ selectedVaultNFTs.length }})
                 </v-btn>
-                <p>Pay CRO → Get NFT + grow the tide</p>
-              </v-col>
-            </v-row>
+              </div>
+              <p v-else>
+                Select NFTs from vault above to swap/purchase
+              </p>
+            </v-card-text>
+          </v-card>
+        </div>
+
+        <!-- Contract Info -->
+        <v-card class="text-center">
+          <v-card-text>
             <p class="mt-4">
               Contract: <a
                 href="https://cronos.org/explorer"
@@ -280,7 +407,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useAppKitAccount, useAppKitProvider } from '@reown/appkit/vue'
+import { ethers, BrowserProvider } from 'ethers'
 
 useHead({
   title: 'Turtle Tide Tactics',
@@ -299,10 +428,268 @@ useHead({
   ],
 })
 
-// Mock data - replace with real API calls
+const eip155Account = useAppKitAccount({ namespace: 'eip155' })
 const totalTurtle = ref(2354000)
 const nftsInVault = ref(1250)
 const turtlePerNft = ref(2354)
+const vaultInfo = ref(null)
+const userNFTs = ref([])
+const vaultNFTs = ref([])
+const selectedNFTs = ref([])
+const selectedVaultNFTs = ref([])
+const processing = ref(false)
+
+const contractAddress = process.env.VITE_VAULT_ADDRESS || '0x...'
+const nftContractAddress = process.env.VITE_NFT_ADDRESS || '0x...'
+const tokenContractAddress = process.env.VITE_TOKEN_ADDRESS || '0x...'
+const chainId = process.env.VITE_CHAIN_ID || 25
+
+function getVaultContract(signer) {
+  const abi = [
+    'function turtlePerNFT() external view returns (uint256)',
+    'function getVaultNFTs() external view returns (uint256[])',
+    'function swapFeeTurtle() external view returns (uint256)',
+    'function purchaseFeeCRO() external view returns (uint256)',
+    'function depositByIds(uint256[] calldata tokenIds) external',
+    'function swapForNFTs(uint256[] calldata tokenIds) external',
+    'function purchaseNFTsWithCRO(uint256[] calldata tokenIds) external payable',
+  ]
+  return new ethers.Contract(contractAddress, abi, signer)
+}
+
+function getNFTContract(signer) {
+  const abi = [
+    'function setApprovalForAll(address operator, bool approved) external',
+    'function isApprovedForAll(address owner, address operator) external view returns (bool)',
+  ]
+  return new ethers.Contract(nftContractAddress, abi, signer)
+}
+
+function getTurtleContract(signer) {
+  const abi = [
+    'function balanceOf(address account) external view returns (uint256)',
+    'function approve(address spender, uint256 amount) external returns (bool)',
+    'function allowance(address owner, address spender) external view returns (uint256)',
+  ]
+  return new ethers.Contract(tokenContractAddress, abi, signer)
+}
+
+async function loadVaultData() {
+  if (!eip155Account.value.isConnected) return
+
+  try {
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+
+    const vaultContract = getVaultContract(signer)
+    const turtleContract = getTurtleContract(signer)
+
+    const poolBalance = await turtleContract.balanceOf(contractAddress)
+    const perNFT = await vaultContract.turtlePerNFT()
+    const swapFee = await vaultContract.swapFeeTurtle()
+    const purchaseFee = await vaultContract.purchaseFeeCRO()
+    const tokens = await vaultContract.getVaultNFTs()
+
+    totalTurtle.value = parseInt(ethers.formatEther(poolBalance))
+    nftsInVault.value = tokens.length
+    turtlePerNft.value = parseInt(ethers.formatEther(perNFT))
+    vaultNFTs.value = tokens.map(t => t.toString())
+
+    vaultInfo.value = {
+      poolBalance: ethers.formatEther(poolBalance),
+      perNFT: ethers.formatEther(perNFT),
+      swapFee: ethers.formatEther(swapFee),
+      purchaseFee: ethers.formatEther(purchaseFee),
+    }
+
+    await loadUserNFTs()
+  }
+  catch (error) {
+    console.error('Error loading vault data:', error)
+  }
+}
+
+async function loadUserNFTs() {
+  if (!eip155Account.value.address) return
+  try {
+    const apiBaseUrl = process.env.VITE_API_BASE || 'http://localhost:8080'
+    const response = await fetch(`${apiBaseUrl}/api/${nftContractAddress}/${chainId}/tokens?owner=${eip155Account.value.address}`)
+    const data = await response.json()
+    userNFTs.value = data.tokens ? data.tokens.map(t => t.toString()) : []
+  }
+  catch (error) {
+    console.error('Error loading user NFTs:', error)
+    userNFTs.value = []
+  }
+}
+
+async function loadVaultNFTs() {
+  try {
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+    const contract = getVaultContract(signer)
+    const tokens = await contract.getVaultNFTs()
+    vaultNFTs.value = tokens.map(t => t.toString())
+  }
+  catch (error) {
+    console.error('Error loading vault NFTs:', error)
+  }
+}
+
+function toggleNFTSelection(tokenId) {
+  const index = selectedNFTs.value.indexOf(tokenId)
+  if (index > -1) {
+    selectedNFTs.value.splice(index, 1)
+  }
+  else if (selectedNFTs.value.length < 20) {
+    selectedNFTs.value.push(tokenId)
+  }
+}
+
+function toggleVaultNFTSelection(tokenId) {
+  const index = selectedVaultNFTs.value.indexOf(tokenId)
+  if (index > -1) {
+    selectedVaultNFTs.value.splice(index, 1)
+  }
+  else if (selectedVaultNFTs.value.length < 20) {
+    selectedVaultNFTs.value.push(tokenId)
+  }
+}
+
+function clearSelection() {
+  selectedNFTs.value = []
+}
+
+function clearVaultSelection() {
+  selectedVaultNFTs.value = []
+}
+
+function selectBatch(nftList, selectedList, start, end) {
+  const batch = nftList.slice(start, end)
+  batch.forEach((tokenId) => {
+    if (!selectedList.includes(tokenId) && selectedList.length < 20) {
+      selectedList.push(tokenId)
+    }
+  })
+}
+
+function getSwapCost() {
+  if (!vaultInfo.value || selectedVaultNFTs.value.length === 0) return '0'
+  const perNFT = parseFloat(vaultInfo.value.perNFT)
+  const swapFee = parseFloat(vaultInfo.value.swapFee)
+  return ((perNFT + swapFee) * selectedVaultNFTs.value.length).toFixed(4)
+}
+
+function getPurchaseCost() {
+  if (!vaultInfo.value || selectedVaultNFTs.value.length === 0) return '0'
+  const purchaseFee = parseFloat(vaultInfo.value.purchaseFee)
+  return (purchaseFee * selectedVaultNFTs.value.length).toFixed(4)
+}
+
+async function depositByTokenIds() {
+  if (selectedNFTs.value.length === 0) return
+  try {
+    processing.value = true
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+
+    const contract = getVaultContract(signer)
+    const nftContract = getNFTContract(signer)
+
+    const isApproved = await nftContract.isApprovedForAll(eip155Account.value.address, contractAddress)
+    if (!isApproved) {
+      const approveTx = await nftContract.setApprovalForAll(contractAddress, true)
+      await approveTx.wait()
+    }
+
+    const tx = await contract.depositByIds(selectedNFTs.value)
+    await tx.wait()
+
+    selectedNFTs.value = []
+    await loadVaultData()
+    processing.value = false
+  }
+  catch (error) {
+    console.error('Deposit failed:', error)
+    processing.value = false
+  }
+}
+
+async function swapForNFTs() {
+  if (selectedVaultNFTs.value.length === 0) return
+  try {
+    processing.value = true
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+
+    const contract = getVaultContract(signer)
+    const turtleContract = getTurtleContract(signer)
+
+    const perNFT = await contract.turtlePerNFT()
+    const swapFee = await contract.swapFeeTurtle()
+    const totalCost = (perNFT + swapFee) * BigInt(selectedVaultNFTs.value.length)
+
+    const allowance = await turtleContract.allowance(eip155Account.value.address, contractAddress)
+    if (allowance < totalCost) {
+      const approveTx = await turtleContract.approve(contractAddress, totalCost)
+      await approveTx.wait()
+    }
+
+    const tx = await contract.swapForNFTs(selectedVaultNFTs.value)
+    await tx.wait()
+
+    selectedVaultNFTs.value = []
+    await loadVaultData()
+    processing.value = false
+  }
+  catch (error) {
+    console.error('Swap failed:', error)
+    processing.value = false
+  }
+}
+
+async function purchaseWithCRO() {
+  if (selectedVaultNFTs.value.length === 0) return
+  try {
+    processing.value = true
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    const signer = await provider.getSigner()
+
+    const contract = getVaultContract(signer)
+    const purchaseFee = await contract.purchaseFeeCRO()
+    const totalCost = purchaseFee * BigInt(selectedVaultNFTs.value.length)
+
+    const tx = await contract.purchaseNFTsWithCRO(selectedVaultNFTs.value, { value: totalCost })
+    await tx.wait()
+
+    selectedVaultNFTs.value = []
+    await loadVaultData()
+    processing.value = false
+  }
+  catch (error) {
+    console.error('Purchase failed:', error)
+    processing.value = false
+  }
+}
+
+watch(eip155Account.value, async (account) => {
+  if (account.isConnected) {
+    await loadVaultData()
+  }
+})
+
+onMounted(async () => {
+  if (eip155Account.value.isConnected) {
+    const { walletProvider } = useAppKitProvider('eip155')
+    const provider = new BrowserProvider(walletProvider)
+    await loadVaultData(provider)
+  }
+})
 </script>
 
 <style scoped>
@@ -311,5 +698,34 @@ code {
   padding: 2px 4px;
   border-radius: 4px;
   font-family: monospace;
+}
+
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.nft-card {
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.nft-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nft-card.selected {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.selected-indicator {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-top: 4px;
 }
 </style>
