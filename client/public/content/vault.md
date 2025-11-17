@@ -1,4 +1,4 @@
-# Turtle Tide Tactics: Unlock $TURTLE Rewards & Stabilize Turtle NFTs
+# Turtle Redemption Vault: Unlock $TURTLE Rewards & Stabilize Turtle NFTs
 
 Welcome to TurtleRedemptionVault — your live, on-chain liquidity engine for Turtle NFTs on Cronos.
 

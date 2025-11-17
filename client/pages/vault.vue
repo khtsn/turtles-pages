@@ -281,13 +281,13 @@ import { ethers, BrowserProvider } from 'ethers'
 import { marked } from 'marked'
 
 useHead({
-  title: 'Turtle Tide Tactics',
+  title: 'Turtle Redemption Vault',
   meta: [
     { name: 'description', content: 'Unlock $TURTLE Rewards & Stabilize Turtle NFTs with TurtleRedemptionVault' },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: 'Turtle Tide Tactics - Turtle On Cronos',
+      content: 'Turtle Redemption Vault - Turtle On Cronos',
     },
     {
       hid: 'og:description',
