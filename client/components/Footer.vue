@@ -57,7 +57,8 @@
 
       <div class="text-center mt-16">
         <p class="text-background">
-          ©2025 TurtleOnCronos. All rights reserved.
+          ©2025 TurtleOnCronos. All rights reserved.<br>
+          Built by the community. Powered by you.
         </p>
       </div>
     </div>

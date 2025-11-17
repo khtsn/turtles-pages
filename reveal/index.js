@@ -1,10 +1,11 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 const { ethers, Contract } = require('ethers')
-const storageURL = "https://turtlesnfts.zack.vn"
-const nftAddress = "0x2baa455e573df4019b11859231dd9e425d885293"
-const provider = new ethers.JsonRpcProvider("https://evm.cronos.org/")
+const storageURL = process.env.STORAGE_URL
+const nftAddress = process.env.NFT_ADDRESS
+const provider = new ethers.JsonRpcProvider(process.env.RPC_URL)
 const abi = require('./abi.json')
 const contract = new Contract(nftAddress, abi, provider)
 const proxy = require('express-http-proxy');

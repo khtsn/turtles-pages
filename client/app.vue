@@ -26,6 +26,7 @@ createAppKit({
   adapters: [new EthersAdapter()],
   networks: [cronos, cronosTestnet],
   metadata: metadata,
+  enableReconnect: false,
   projectId: config.public.walletConnectId,
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration

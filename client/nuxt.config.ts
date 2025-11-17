@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Home',
-      titleTemplate: '%s',
+      titleTemplate: '%s - Turtle On Cronos',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],

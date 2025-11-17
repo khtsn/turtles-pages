@@ -362,7 +362,7 @@ const formatTimestamp = (timestamp) => {
 }
 
 const prepareExplorerURL = (val) => {
-  return ('https://cronoscan.com/tx/' + val)
+  return ('https://explorer.cronos.org/tx/' + val)
 }
 </script>
 
