@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Cronos Etherscan API endpoint
-const CRONOS_API_URL = 'https://api.etherscan.io/v2/api';
+const CRONOS_API_URL = 'https://explorer-api.cronos.org/mainnet/api/v2';
 
 app.get('/nfts/:address', async (req, res) => {
   try {
@@ -19,13 +19,13 @@ app.get('/nfts/:address', async (req, res) => {
 
     const response = await axios.get(CRONOS_API_URL, {
       params: {
-        chainid: 25,
+        // chainid: 25,
         module: 'account',
         action: 'tokennfttx',
         address: address,
         contractaddress: '0x2baa455e573df4019b11859231dd9e425d885293',
-        startblock: 19320564,
-        endblock: 99999999,
+        // startblock: 19320564,
+        // endblock: 99999999,
         sort: 'desc',
         apikey: apiKey
       }
