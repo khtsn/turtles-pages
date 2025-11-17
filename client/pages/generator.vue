@@ -61,6 +61,12 @@
                 <v-card-subtitle>Token #{{ nft.tokenId }}</v-card-subtitle>
               </v-card>
             </div>
+            <p
+              v-if="lastSynced"
+              class="text-center text-caption mt-2"
+            >
+              Last synced: {{ lastSynced.toLocaleTimeString() }}
+            </p>
           </v-card-text>
         </v-card>
 
@@ -264,6 +270,7 @@ const generating = ref(false)
 const activeTab = ref('GM')
 const loadedAddress = ref('')
 const searchTokenId = ref('')
+const lastSynced = ref(null)
 
 const gmTeacupOverlays = computed(() =>
   overlays.value.filter(o => o.category === 'GM'),
@@ -289,6 +296,8 @@ const filteredNFTs = computed(() => {
 })
 
 const fetchUserNFTs = async (userAddress) => {
+  if (!userAddress) return []
+
   loadingText.value = 'Connecting to API...'
   try {
     const config = useRuntimeConfig()
@@ -296,28 +305,43 @@ const fetchUserNFTs = async (userAddress) => {
     const contractAddress = '0x2bAA455e573df4019B11859231Dd9e425D885293'
     const chainId = 25
 
-    // Fetch user's token IDs
+    // Get last fetch time from contract data
+    const contractResponse = await fetch(`${apiUrl}/api/contracts/${contractAddress}/${chainId}`)
+    if (contractResponse.ok) {
+      const contractData = await contractResponse.json()
+      if (contractData.last_fetch) {
+        lastSynced.value = new Date(contractData.last_fetch)
+      }
+    }
+
     loadingText.value = 'Fetching your NFTs...'
     const response = await fetch(`${apiUrl}/api/${contractAddress}/${chainId}/tokens?owner=${userAddress}`)
-    if (!response.ok) return []
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`)
+    }
 
     const data = await response.json()
     const fetchedNFTs = []
 
     loadingText.value = 'Processing NFT data...'
-    for (const tokenId of data.tokens || []) {
+    const tokens = data.tokens || []
+
+    for (const tokenId of tokens) {
       fetchedNFTs.push({
-        tokenId: tokenId,
+        tokenId: tokenId.toString(),
         image: `https://nft.turtleoncro.com/${parseInt(tokenId) + 1}.png`,
       })
     }
 
     nfts.value = fetchedNFTs
+    loadedAddress.value = userAddress
     return fetchedNFTs
   }
   catch (error) {
     console.error('Error fetching NFTs:', error)
-    loadingText.value = 'Error loading NFTs'
+    loadingText.value = `Error loading NFTs: ${error.message}`
+    nfts.value = []
     return []
   }
 }
@@ -423,18 +447,26 @@ const selectOverlay = async (overlay) => {
 }
 
 const loadUserNFTs = async () => {
-  if (!isConnected.value) return
+  if (!isConnected.value || !address.value) {
+    nfts.value = []
+    return
+  }
+
+  // Skip if already loaded for this address
+  if (loadedAddress.value === address.value && nfts.value.length > 0) {
+    return
+  }
 
   loading.value = true
   loadingText.value = 'Fetching your NFTs...'
   nfts.value = []
+
   try {
-    await fetchUserNFTs(
-      address.value,
-    )
+    await fetchUserNFTs(address.value)
   }
   catch (error) {
     console.error('Error loading NFTs:', error)
+    loadingText.value = `Failed to load NFTs: ${error.message}`
   }
   finally {
     loading.value = false
@@ -484,15 +516,19 @@ onMounted(() => {
 })
 
 watch(eip155Account.value, async (account) => {
-  if (account.isConnected) {
-    if (account.address === loadedAddress.value) return
-    loadedAddress.value = account.address
-    await loadUserNFTs()
+  if (account.isConnected && account.address) {
+    // Only reload if address changed
+    if (account.address !== loadedAddress.value) {
+      await loadUserNFTs()
+    }
   }
   else {
+    // Clear state when disconnected
     nfts.value = []
     selectedNFT.value = null
+    selectedOverlay.value = null
     mixedImage.value = ''
+    loadedAddress.value = ''
   }
 })
 </script>
