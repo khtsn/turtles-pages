@@ -87,6 +87,16 @@
 
         <!-- Vault Interface -->
         <div v-if="eip155Account.isConnected">
+          <!-- Wallet Asset Delay Warning -->
+          <v-alert
+            type="warning"
+            class="mb-4"
+            prominent
+          >
+            <v-alert-title>Wallet Asset Delay Notice</v-alert-title>
+            Wallet assets may have a 4 hour delay, vault assets are real-time. If you minted or purchased Turtles NFTs in the last 4 hours it may not show up in wallet here. Check marketplaces or explorer.
+          </v-alert>
+
           <!-- Your NFTs -->
           <v-card class="mb-6">
             <v-card-title>Your NFTs ({{ userNFTs.length }})</v-card-title>
