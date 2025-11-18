@@ -17,7 +17,7 @@ Welcome to TurtleRedemptionVault — your live, on-chain liquidity engine for Tu
 
 * Pay 1 Turtle NFT + Turtle Per NFT Fee + 32,000 $TURTLE fee
 * Receive 1 Vault NFT instantly
-* Your NFT + 100% of fees locked → increases $TURTLE per NFT (e.g., 2,354 → 2,357 per deposit)
+* Your NFT + 100% of fees locked → increases $TURTLE per NFT (e.g., 3,764 → 3,767 per deposit)
 * Keeps NFT count stable. Fuels growth.
 
 ### 3. Buy with CRO → Power the Ecosystem
@@ -25,11 +25,12 @@ Welcome to TurtleRedemptionVault — your live, on-chain liquidity engine for Tu
 Purchase Turtle NFTs on-site using CRO:
 
 * Launch floor: 216 CRO (20% above CRO mint price)
-* Live floor: 20%+ above marketplace CRO floor (post mint, adjusted in 24 hrs)
+* Vault floor after Jan 1, 2016 price increase: 252 CRO (20% above mint price) 
+* Post Mint Vault floor: 20%+ above marketplace CRO floor (post mint, adjusted in 24 hrs)
 
 **CRO is used to:**
 
-1. Buy and replace 2x $TURTLE taken for original deposit → sent to vault pool
+1. Buy and replace minimum 2x $TURTLE taken for original deposit → sent to vault pool
 2. Fund annual buybacks wallet. Once annual top-ups are completed for our earning contract, remainder gets deposited into pool.
 
 * This is the only way NFTs leave the vault (besides swaps)
@@ -45,7 +46,7 @@ Purchase Turtle NFTs on-site using CRO:
 * Locked Forever
 
 ### Live Impact
-* ~2,354 $TURTLE per NFT now → grows with every action
+* ~3,764 $TURTLE per NFT now → grows with every action
 * Swaps & CRO buys add more $TURTLE per nft
 * Dynamic pricing + vault lock = less cheap wCRO dumps
 * Less sell pressure → stronger floors across all platforms
