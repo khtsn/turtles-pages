@@ -259,7 +259,8 @@
                 </v-card>
                 <v-btn
                   color="secondary"
-                  class="mr-2"
+                  class="mb-2 d-sm-inline-block d-block"
+                  block
                   :loading="processing"
                   @click="swapForNFTs"
                 >
@@ -267,6 +268,8 @@
                 </v-btn>
                 <v-btn
                   color="success"
+                  class="mb-2 d-sm-inline-block d-block"
+                  block
                   :loading="processing"
                   @click="purchaseWithCRO"
                 >
