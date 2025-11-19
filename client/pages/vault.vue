@@ -261,7 +261,7 @@
                   color="secondary"
                   class="mb-2 d-sm-inline-block d-block"
                   block
-                  :loading="processing"
+                  :loading="processingSwap"
                   @click="swapForNFTs"
                 >
                   Swap TURTLE ({{ selectedVaultNFTs.length }})
@@ -270,7 +270,7 @@
                   color="success"
                   class="mb-2 d-sm-inline-block d-block"
                   block
-                  :loading="processing"
+                  :loading="processingPurchase"
                   @click="purchaseWithCRO"
                 >
                   Purchase with CRO ({{ selectedVaultNFTs.length }})
@@ -321,6 +321,8 @@ const vaultNFTs = ref([])
 const selectedNFTs = ref([])
 const selectedVaultNFTs = ref([])
 const processing = ref(false)
+const processingSwap = ref(false)
+const processingPurchase = ref(false)
 const renderedMarkdown = ref('')
 
 const contractAddress = process.env.VITE_VAULT_ADDRESS || '0x03D90756cf107898bB86049aCd426a6E980b79B7'
@@ -518,7 +520,7 @@ async function depositByTokenIds() {
 async function swapForNFTs() {
   if (selectedVaultNFTs.value.length === 0) return
   try {
-    processing.value = true
+    processingSwap.value = true
     const { walletProvider } = useAppKitProvider('eip155')
     const provider = new BrowserProvider(walletProvider)
     const signer = await provider.getSigner()
@@ -541,18 +543,18 @@ async function swapForNFTs() {
 
     selectedVaultNFTs.value = []
     await loadVaultData()
-    processing.value = false
+    processingSwap.value = false
   }
   catch (error) {
     console.error('Swap failed:', error)
-    processing.value = false
+    processingSwap.value = false
   }
 }
 
 async function purchaseWithCRO() {
   if (selectedVaultNFTs.value.length === 0) return
   try {
-    processing.value = true
+    processingPurchase.value = true
     const { walletProvider } = useAppKitProvider('eip155')
     const provider = new BrowserProvider(walletProvider)
     const signer = await provider.getSigner()
@@ -566,11 +568,11 @@ async function purchaseWithCRO() {
 
     selectedVaultNFTs.value = []
     await loadVaultData()
-    processing.value = false
+    processingPurchase.value = false
   }
   catch (error) {
     console.error('Purchase failed:', error)
-    processing.value = false
+    processingPurchase.value = false
   }
 }
 
