@@ -41,6 +41,10 @@ export default defineNuxtConfig({
       appUrl: '',
       walletConnectId: 'd597fb2c81b43b56bb52a248de3cbca2',
       nftApiUrl: process.env.NFT_API_URL || 'http://localhost:3000',
+      vaultAddress: process.env.VITE_VAULT_ADDRESS || '0x03D90756cf107898bB86049aCd426a6E980b79B7',
+      nftAddress: process.env.VITE_NFT_ADDRESS || '0x5848335bbd8e10725f5a35d97a8e252efda9be1a',
+      tokenAddress: process.env.VITE_TOKEN_ADDRESS || '0x2baa455e573df4019b11859231dd9e425d885293',
+      chainId: process.env.VITE_CHAIN_ID || '338',
     },
   },
   build: {

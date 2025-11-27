@@ -2,134 +2,153 @@
 
 ![Turtle NFTs](/nfts.png)
 
-## Disclosure:
+------------------------------------------------------------------------
 
-Cryptocurrency and NFTs are volatile assets. We cannot speculate future price or market conditions. Do not invest more than you are willing to lose. Even the best cryptocurrencies and NFTs have dropped over 80%. All we guarantee is transparency, consistency, and good vibes.
+## Disclosure
 
-We have no affiliation to any of the derivative art in this NFT collection. Chests are saluting and supporting our paired tokens at launch that have burned liquidity.
+Cryptocurrency tokens and NFTs are high‑risk, volatile assets. Market
+performance, pricing, and liquidity cannot be guaranteed. Participants
+should never commit more capital than they are prepared to lose.
+Historically, even strong projects have experienced drawdowns exceeding
+80%.
 
-Companions are a salute to legacy NFT collections on Cronos and Ethereum. Both are only meant to bring awareness to Cronos, Cryptocurrency's, NFTs, and memecoins as a whole.
+This project makes no financial guarantees. Our commitments are limited
+to transparency, consistent communication, and responsible stewardship
+of community resources.
 
-## Overview
+The Turtle brand is not formally affiliated with any derivative or
+homage art used in the NFT ecosystem. "Chests" and "Companions" are
+community tributes intended to support partnered tokens that have
+implemented liquidity burns and to raise awareness of Cronos,
+cryptocurrency, NFTs, and memecoins.
 
-The Turtle token was launched on the Cronos Blockchain Mar 19 2024, and abandoned by its original dev in Early May 2024. The community has taken over since.
+------------------------------------------------------------------------
 
-CryptoDaave has led this initiative and continued building liquidity on VVS Finance, the preferred DEX on Cronos with the help of the community. We have also now been whitelisted on Ebisu's Bay, Obsidian Finance, and also DooSWap aggregator. There is liquidity on CronaSwap, EbisusBay, MMFinance, and ObsidianFinance.
+## 1. Overview
 
-The original dev burned his keys to the first MMF LP before leaving. As a CTO, there was no funding for development growth. This is a non-tax token and all of the supply was circulating from day one. It is original branding and not a derivative. We need funds for future developments, and the majority of liquidity burned in all of our trading pairs.
+The Turtle token (\$TURTLE) launched on the Cronos blockchain on March
+19, 2024. In early May 2024, the original developer exited the project,
+after which the community assumed full operational control under a
+Community Takeover (CTO).
 
-We are launching a non-profit NFT collection to further our reach in the space as a community and gather funds for NFT/CTO costs, development, and liquidity burning.
+Leadership of the CTO has been coordinated by CryptoDaave with active
+community participation. Since takeover, liquidity has been rebuilt
+primarily on VVS Finance, the primary decentralized exchange on Cronos.
+The project is now indexed on multiple platforms.
 
-We will share the full details and the planning for the $TURTLE token and NFT collection below.
+The original developer renounced the token contract and permanently
+burned the initial MMF liquidity pool before departure. \$TURTLE is a
+non‑tax token with 100% of supply in circulation since launch.
 
-Both, the Turtle Token and the Turtle NFTs will be designed to work together and bring value to each other through mandatory minimum held of each token in order to earn more Turtle.
+------------------------------------------------------------------------
 
-The NFT ownership will form a DAO for voting based on any major decisions for the brand.
+## 2. Turtle Tokenomics
 
-## Turtle Tokenomics
-* 1 Billion Supply
-* 100% supply circulating
-* Renounced Contract
-* Non Tax
+-   Total Supply: 1,000,000,000 \$TURTLE\
+-   Circulating Supply: 100%\
+-   Contract Status: Renounced\
+-   Transaction Tax: None
 
-## Turtle Overview
+------------------------------------------------------------------------
 
-We now have many trading pairs. All have burned liquidity. We would like our main CRO liquidity pool on VVS Finance to be much bigger than our MMF pool to reduce the impact on trades, and with a minimum amount of burned 80% liquidity. It is approximately 25% bigger than MMF now. It will be done slowly over time with funds allocated from NFTs.
+## 3. Liquidity and Treasury Strategy
 
-We will set aside unused treasury funds for future CEX listings and/or development in the community vault. Any funds in the vault that are to be used for growth and development will be voted by the community DAO formed through NFT ownership before spending.
+Turtle maintains multiple liquidity pools across Cronos DEXs. All pools
+have burned liquidity. The long‑term objective is to prioritize the
+CRO/TURTLE pool on VVS Finance with at least 80% permanently burned.
 
-Our first goals as a community were CoinGecko, Cronos Explorer updates, and Onchain wallet. All completed as a CTO. Crypto.com, Crypto.com NFT, and CMC listings are next.
+Unused treasury funds are reserved for:
 
-As a CTO, we have a new X page, website, and Dexscreener paid for. The NFTs introduce a way to earn Turtle with a FIXED rate, adjustable every year. Full details in earning details below.
+-   Exchange listings\
+-   Smart contract development\
+-   Partnerships
 
-## TURTLE NFT Overview
+All major expenditures require DAO approval.
 
-Non-profit 10,625 piece collection with 216 traits living on the Cronos Blockchain using an ERC721 contract. Hand drawn art. Original branding, not a derivative.
+------------------------------------------------------------------------
 
-We will focus on Cronos and cross-chain EVM partnerships to grow community and exposure in the space. Our main focus will be on gaming partnerships where the token can be used in their platforms, but not limited to.
+## 4. TURTLE NFT Overview
 
-We have introduced an NFT earning contract joined with Turtle to earn daily Turtle for holding.
+The Turtle NFT Collection consists of 10,625 hand‑drawn NFTs with 216
+traits on Cronos using ERC‑721.
 
-## Turtle Redemption Vault:
+Primary objectives:
 
-A perpetual redemption mechanism launching alongside the NFTs. The vault starts with ~40M TURTLE (part of 108M set aside from already minted funds) and grows over time via leftover annual buybacks, swaps, CRO purchases, and additional mint funds from price increases. Base ratio = total vault TURTLE / 10,625 NFTs (e.g., ~3,764 TURTLE per NFT at launch). No withdrawals except direct redemption to NFTs. Acts as a TURTLE/TurtleNFT liquidity pair for ongoing holder value and stability.
+-   Funding development\
+-   Supporting liquidity\
+-   DAO governance\
+-   Fixed‑rate earning
 
-## TURTLE NFT Distribution
+------------------------------------------------------------------------
 
-* 500 Admin mint for Turtlecommunity-vault.cro to be owned by DAO.
-* 150 Admin mint Cryptodaave
-* 150 Admin mint DarkmindofL
-* 1200 Admin Mint airdrops to early registered wallets, top 200 Turtle token holders, CamelsNFT holders with 4 or more, and Camels 3D holders with 2 or more. Completed on May 3, 2025.
-* 2625 $TURTLE mints maximum (150,000 Turtle mint cost.)
-UPDATED JULY 31 from 200,000 Turtle.
-UPDATED AUGUST 29 FROM 150,000 Turtle. UPDATED OCTOBER 10 FROM 100,000 Turtle.
-Turtle minting rate will now be FIXED AS OF TURTLE REDEMPTION VAULT LAUNCH.
-* 6000 public paid CRO mints total (210 CRO as of Jan 1, 2026).
+## 5. Turtle Redemption Vault
 
-UPDATED JULY 31 from 240 CRO.
-UPDATED AUGUST 29 from 180 CRO.
-UPDATED SEPTEMBER 22 FROM 90 CRO.
-UPDATED OCTOBER 10 FROM 120 CRO.
-UPDATED NOVEMBER 16: Staged CRO price increases (details in Mint Price Adjustment Plan below).
+The Turtle Redemption Vault is a perpetual redemption mechanism deployed
+alongside the NFT collection. It launches with approximately **40
+million \$TURTLE**, sourced from the **108 million \$TURTLE allocated to
+Turtle NFT mints to date**, and grows over time through:
 
-## Turtle NFT Cost and Fund Allocation
+-   Annual \$TURTLE buybacks\
+-   TURTLE swaps\
+-   CRO purchases\
+-   Additional mint proceeds
 
-2625 mint at 150,000 $TURTLE. This is to reward, thin out wallets of long-term holders, and bring some chart stability.
+The base redemption ratio is:
 
-Turtle will be used towards burned liquidity, earnings contracts, redemption vault, and an allocation for future ETH liquidity bridged and burned (ETH from outside source). We had 3 years supply of earning contracts pre-mint and added to earning contract.
-~108M TURTLE set aside from minting as of Nov 2025 (including 40M for redemption vault).
+**Total Vault \$TURTLE / 10,625 NFTs**
 
-CRO mints (current 180; upcoming staged raises): Broken down in percentages below, this is how the funds from public minting are allocated. Depending on the speed of minting process, funds will not be removed. As CRO mint price rises, extra funds (above 180 CRO base) go exclusively to additional TURTLE buybacks.
+At launch, this equates to approximately **3,764 \$TURTLE per NFT**.
+**TURTLE and Turtle NFTs withdrawals are only available via direct NFT
+redemption, forming a built‑in TURTLE/NFT liquidity mechanism engineered
+for long‑term stability. CRO is used to buy back \$TURTLE.**
 
-For Stage 1 at 210 CRO per mint (180 CRO base + 30 CRO extra):
+------------------------------------------------------------------------
 
-* **21%** of mint funds (~45 CRO) go to team. This covers the entire cost of CTO to date, existing burned liquidity, existing TURTLE allocated for staking, existing TURTLE owned by the community DAO vault, dev costs to launch NFTs, DAO contracts, website mint upgrades, artist, and unexpected miscellaneous costs regarding CTO, NFT launch, plan, and execution. None of this is profit—it's actually negative if you add it up individually.
+## 6. Mint Pricing and Fund Allocation
 
-* **17%** of mint funds (~36 CRO) will be minting incentives and community collaborations during mint. E.g., flextoearn.xyz, secondary staking, and more as funds allow.
+### CRO Public Mint -- Reference Pricing
 
-* **21%** of mint funds (~45 CRO) go to community treasury to build the Turtle brand. This will be used to increase exposure to Turtle memecoin and Turtle NFTs, cover any monthly/yearly expenses, and share building funds like new contracts, initiatives, and dev fees. The Community DAO will control any major decisions on this. The Turtle Treasury Advisor will act as community voice. Unused funds will be staked and validated in CRO or in stable liquidity pools by the community vault to earn monthly for the community, growth, and monthly income rather than stagnant funds—until DAO votes otherwise.
+-   Current Reference Price: 240 CRO\
+-   Next Scheduled Increase: 270 CRO on Jan 1, 2026
 
-* **19%** of mint funds (~39 CRO, including the extra 30 CRO per mint) to direct buybacks of TURTLE off market. This includes the base allocation plus the additional funds from the price increase, strictly used to buy back TURTLE and add it to the annual buyback wallet. After annual topups of earning contract emissions, all remaining turtle goes to Turtle Redemption Vault contract for burned liquidity and chart stability. This happens annually.
+### Fund Allocation (Stage 1)
 
-* **22%** of mint funds (~45 CRO) for liquidity to be burned, and combined with TURTLE allocation from mints. Number could fluctuate up if the 2,625 TURTLE minting allocation does not max out—in this scenario, any extra minted would be used for buyback of TURTLE. Once the CRO VVS Finance pool reaches desired size, some of the remainder can be used to ensure all remaining pools supported in the collection are as close to $1,000 minimum as possible. Then, grow core blue-chip pools' burned liquidity (e.g., USDC, WETH, WBTC).
+-   21% -- CTO costs, staking, dev, art, DAO vault, infrastructure\
+-   17% -- Mint incentives and integrations\
+-   21% -- Community treasury (DAO governed)\
+-   19% -- TURTLE buybacks and earning emissions\
+-   22% -- Burned liquidity
 
-## Mint Price Adjustment Plan
+Unused funds are staked until DAO voting begins.
 
-Turtle mints fixed at 150,000 TURTLE per NFT until end of minting.
+------------------------------------------------------------------------
 
-CRO minting: Staged raises to drive TURTLE/CRO ratio higher while keeping competitive. Announced in advance; triggered at target ratios (or sooner if ratios rise faster). Annual reviews on mint anniversaries regardless of ratio.
+## 8. Mint Price Adjustment Plan
 
-* Current: 180 CRO per mint (hovering ~0.0012 CRO/TURTLE; 150,000 TURTLE ≈ 180-181.5 CRO).
-* Stage 1 (Upcoming): Raise to 210 CRO on Jan 1 (target ~0.0014 CRO/TURTLE; 150,000 TURTLE = 210 CRO).
-* Stage 2: Raise to 240 CRO May, 2027 (or sooner at ~0.0016 CRO/TURTLE).
-* Stage 3: Raise to 270 CRO on following anniversary (or sooner at ~0.0018 CRO/TURTLE).
+-   TURTLE mint floor: **150,000 minimum per NFT**\
+-   CRO increases in **30‑CRO stages** based on ratios or anniversaries
 
-Extra CRO from raises → TURTLE buybacks for liquidity.
+Examples:
 
-Dynamic CRO/USD adjustments for serious fluctuations (rough USD target shifts from ~20-25 to ~25-30 post-Jan 1):
+-   CRO at \$0.10 → \~270 CRO\
+-   CRO at \$0.20 → \~150 CRO
 
-* CRO at $0.10 → ~270 CRO.
-* CRO at $0.20 → ~150 CRO.
+Annual pricing reviews begin on the second anniversary.
 
-Actuals announced transparently.
+------------------------------------------------------------------------
 
-## Turtle and NFT Earning Contract
+## 10. NFT Royalties
 
-Each NFT locked with 35,000 Turtle will earn 10 Turtle a day, a steady 10.29% annual return (excluding NFT cost). Calculated per day. This number can adjust but not exceed 10. This is a maximum of 38,781,250 Turtle emissions annually, first year, if max supply token and NFT were staked. This will never happen with the community owned assets and liquidity pools. At the end of each year and/or end of mint, we will adjust the emissions rate up or down based on remaining emissions from the previous year and community earnings from royalties and fees. The rates must be adjusted to always maintain an expected 3 year supply of emissions. Until the collection mints out, it is for testing to maintain sustainability and give instant rewards to holders.
+-   50% → TURTLE buybacks + Redemption Vault\
+-   25% → Community incentives\
+-   25% → Treasury / CTO
 
-## NFT Royalties
+Royalties begin at **9%** and reduce to **6%** after full mint and
+sustained \$50 floor. All withdrawals announced transparently.
 
-50% of royalties go directly to Turtle annual buyback wallet for earning contract and turtle redemption vault, 25% to community incentives/rewards, 25% to treasury towards CTO overhead.
+------------------------------------------------------------------------
 
-Royalties will start at 9%, until mint is complete, and we reach a milestone of $50 floor price. It will then be reduced to 6%. Any other changes afterward will be a DAO vote.
+## Disclaimer
 
-## Major Minting Accomplishments
-
-* 2000 minted: Reveal images (Completed)
-* Approximately $1500 raised in CRO: Initiated earning contract (Completed)
-* ~3625 minted: Launch Turtle Redemption Vault
-* 6500 minted: Start DAO contract
-
-The withdrawals will take place in even increments as mentioned above and allocated according to schedule. Funds will be distributed according to plan, and minting incentives will start.
-
-**Disclaimer:** This is a base plan starting point. The space is evolving fast. If we have to pivot during mint to maintain relevancy it will be discussed with community first. If you have any questions or concerns reach out to the team directly.
+This document represents a baseline framework and is subject to
+DAO‑approved changes.
