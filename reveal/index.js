@@ -25,14 +25,21 @@ app.get('/:id.png', async (req, res, next) => {
     if (tokenId > totalSupply) {
         res.status(404).send({})
     }
+    res.set('Cache-Control', 'public, max-age=31536000, immutable')
     next()
 }, proxy(storageURL))
-app.get('/:id.json', getMetadata, proxy(storageURL, {
+app.get('/:id.json', getMetadata, (req, res, next) => {
+    res.set('Cache-Control', 'public, max-age=31536000, immutable')
+    next()
+}, proxy(storageURL, {
     proxyReqPathResolver: function (req) {
       return '/' + (parseInt(req.params['id']) + 1) +'.json';
     }
   }))
-app.get('/:id', getMetadata, proxy(storageURL, {
+app.get('/:id', getMetadata, (req, res, next) => {
+    res.set('Cache-Control', 'public, max-age=31536000, immutable')
+    next()
+}, proxy(storageURL, {
     proxyReqPathResolver: function (req) {
       return '/' + (parseInt(req.params['id']) + 1) +'.json';
     }
