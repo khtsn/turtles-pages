@@ -44,9 +44,9 @@ non‑tax token with 100% of supply in circulation since launch.
 
 ## 2. Turtle Tokenomics
 
--   Total Supply: 1,000,000,000 \$TURTLE\
--   Circulating Supply: 100%\
--   Contract Status: Renounced\
+-   Total Supply: 1,000,000,000 \$TURTLE
+-   Circulating Supply: 100%
+-   Contract Status: Renounced
 -   Transaction Tax: None
 
 ------------------------------------------------------------------------
@@ -59,8 +59,8 @@ CRO/TURTLE pool on VVS Finance with at least 80% permanently burned.
 
 Unused treasury funds are reserved for:
 
--   Exchange listings\
--   Smart contract development\
+-   Exchange listings
+-   Smart contract development
 -   Partnerships
 
 All major expenditures require DAO approval.
@@ -70,13 +70,13 @@ All major expenditures require DAO approval.
 ## 4. TURTLE NFT Overview
 
 The Turtle NFT Collection consists of 10,625 hand‑drawn NFTs with 216
-traits on Cronos using ERC‑721.
+traits on Cronos using ERC‑721A.
 
 Primary objectives:
 
--   Funding development\
--   Supporting liquidity\
--   DAO governance\
+-   Funding development
+-   Supporting liquidity
+-   DAO governance
 -   Fixed‑rate earning
 
 ------------------------------------------------------------------------
@@ -88,9 +88,9 @@ alongside the NFT collection. It launches with approximately **40
 million \$TURTLE**, sourced from the **108 million \$TURTLE allocated to
 Turtle NFT mints to date**, and grows over time through:
 
--   Annual \$TURTLE buybacks\
--   TURTLE swaps\
--   CRO purchases\
+-   Annual \$TURTLE buybacks
+-   TURTLE swaps
+-   CRO purchases
 -   Additional mint proceeds
 
 The base redemption ratio is:
@@ -108,15 +108,15 @@ for long‑term stability. CRO is used to buy back \$TURTLE.**
 
 ### CRO Public Mint -- Reference Pricing
 
--   Current Reference Price: 240 CRO\
+-   Current Reference Price: 240 CRO
 -   Next Scheduled Increase: 270 CRO on Jan 1, 2026
 
 ### Fund Allocation (Stage 1)
 
 -   21% -- CTO costs, staking, dev, art, DAO vault, infrastructure\
--   17% -- Mint incentives and integrations\
--   21% -- Community treasury (DAO governed)\
--   19% -- TURTLE buybacks and earning emissions\
+-   17% -- Mint incentives and integrations
+-   21% -- Community treasury (DAO governed)
+-   19% -- TURTLE buybacks and earning emissions
 -   22% -- Burned liquidity
 
 Unused funds are staked until DAO voting begins.
@@ -125,12 +125,12 @@ Unused funds are staked until DAO voting begins.
 
 ## 8. Mint Price Adjustment Plan
 
--   TURTLE mint floor: **150,000 minimum per NFT**\
+-   TURTLE mint floor: **150,000 minimum per NFT**
 -   CRO increases in **30‑CRO stages** based on ratios or anniversaries
 
 Examples:
 
--   CRO at \$0.10 → \~270 CRO\
+-   CRO at \$0.10 → \~270 CRO
 -   CRO at \$0.20 → \~150 CRO
 
 Annual pricing reviews begin on the second anniversary.
@@ -139,8 +139,8 @@ Annual pricing reviews begin on the second anniversary.
 
 ## 10. NFT Royalties
 
--   50% → TURTLE buybacks + Redemption Vault\
--   25% → Community incentives\
+-   50% → TURTLE buybacks + Redemption Vault
+-   25% → Community incentives
 -   25% → Treasury / CTO
 
 Royalties begin at **9%** and reduce to **6%** after full mint and
