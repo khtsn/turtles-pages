@@ -148,7 +148,7 @@
                 type="warning"
                 class="mb-4"
               >
-                ⚠️ WARNING: You will permanently lose ownership of selected NFTs. You will receive {{ vaultInfo?.perNFT || '0' }} TURTLE tokens per NFT.
+                ⚠️ WARNING: You will permanently lose ownership of selected NFTs. You will receive {{ vaultInfo?.perNFT ? parseFloat(vaultInfo.perNFT).toFixed(2) : '0' }} TURTLE tokens per NFT.
               </v-alert>
               <div class="mb-4">
                 <v-btn
@@ -235,7 +235,7 @@
                 type="info"
                 class="mb-4"
               >
-                ℹ️ Select equal number of NFTs from both your collection and vault to perform a 1:1 swap. You pay {{ vaultInfo?.swapFee || '0' }} TURTLE per NFT as swap fee.
+                ℹ️ Select equal number of NFTs from both your collection and vault to perform a 1:1 swap. You pay {{ vaultInfo?.swapFee ? parseFloat(vaultInfo.swapFee).toFixed(2) : '0' }} TURTLE per NFT as swap fee.
               </v-alert>
               <v-row class="mb-4">
                 <v-col cols="6">
@@ -254,7 +254,7 @@
                     <p><strong>Swap Summary:</strong></p>
                     <p>Giving: {{ selectedNFTs.length }} NFT(s) from your wallet</p>
                     <p>Receiving: {{ selectedVaultNFTs.length }} NFT(s) from vault</p>
-                    <p>Fee: {{ getSwapCost() }} TURTLE ({{ vaultInfo.swapFee }} per NFT)</p>
+                    <p>Fee: {{ getSwapCost() }} TURTLE ({{ parseFloat(vaultInfo.swapFee).toFixed(2) }} per NFT)</p>
                     <p
                       v-if="selectedNFTs.length !== selectedVaultNFTs.length"
                       class="text-error"
@@ -305,7 +305,7 @@
                   color="grey-lighten-4"
                 >
                   <v-card-text>
-                    <p><strong>Purchase Cost:</strong> {{ getPurchaseCost() }} CRO ({{ vaultInfo.purchaseFee }} per NFT)</p>
+                    <p><strong>Purchase Cost:</strong> {{ getPurchaseCost() }} CRO ({{ parseFloat(vaultInfo.purchaseFee).toFixed(2) }} per NFT)</p>
                   </v-card-text>
                 </v-card>
                 <v-btn
