@@ -423,17 +423,15 @@ async function loadVaultData() {
 
     const vaultContract = getVaultContract(provider)
     const turtleContract = getTurtleContract(provider)
-    const nftContract = getNFTContract(provider)
 
     const poolBalance = await turtleContract.balanceOf(contractAddress)
-    const nftBalance = await nftContract.balanceOf(contractAddress)
     const perNFT = await vaultContract.turtlePerNFT()
     const swapFee = await vaultContract.swapFeeTurtle()
     const purchaseFee = await vaultContract.purchaseFeeCRO()
     const tokens = await vaultContract.getVaultNFTs()
 
     totalTurtle.value = parseInt(ethers.formatEther(poolBalance))
-    nftsInVault.value = parseInt(nftBalance.toString())
+    nftsInVault.value = parseInt(tokens.length || 0)
     turtlePerNft.value = parseInt(ethers.formatEther(perNFT))
     vaultNFTs.value = tokens.map(t => t.toString())
 
