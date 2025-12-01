@@ -175,6 +175,11 @@ const menus = reactive([
     to: '/generator',
     href: '/generator',
   },
+  {
+    title: 'Redemption Vault',
+    to: '/vault',
+    href: '/vault',
+  },
 ])
 </script>
 
