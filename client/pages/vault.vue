@@ -31,6 +31,12 @@
                   <p class="text-h4">
                     {{ totalTurtle.toLocaleString() }}
                   </p>
+                  <p
+                    v-if="turtleUsdPrice"
+                    class="text-h6 text-green font-weight-bold mt-1"
+                  >
+                    ≈ ${{ (totalTurtle * turtleUsdPrice).toFixed(2) }}
+                  </p>
                 </v-card>
               </v-col>
               <v-col
@@ -60,6 +66,12 @@
                   <h3>Current $TURTLE per NFT</h3>
                   <p class="text-h4">
                     {{ turtlePerNft.toLocaleString() }}
+                  </p>
+                  <p
+                    v-if="turtleUsdPrice"
+                    class="text-h6 text-green font-weight-bold mt-1"
+                  >
+                    ≈ ${{ (turtlePerNft * turtleUsdPrice).toFixed(2) }}
                   </p>
                 </v-card>
               </v-col>
@@ -361,6 +373,7 @@ const nftsInVault = ref(0)
 const turtlePerNft = ref(0)
 const lastSynced = ref(null)
 const vaultInfo = ref(null)
+const turtleUsdPrice = ref(null)
 const userNFTs = ref([])
 const vaultNFTs = ref([])
 const selectedNFTs = ref([])
@@ -369,6 +382,7 @@ const processing = ref(false)
 const processingSwap = ref(false)
 const processingPurchase = ref(false)
 const renderedMarkdown = ref('')
+let priceInterval = null
 
 const contractAddress = config.public.vaultAddress || '0x03D90756cf107898bB86049aCd426a6E980b79B7'
 const nftContractAddress = config.public.nftAddress || '0x5848335bbd8e10725f5a35d97a8e252efda9be1a'
@@ -406,6 +420,19 @@ function getTurtleContract(signer) {
   return new ethers.Contract(tokenContractAddress, abi, signer)
 }
 
+async function fetchTurtlePrice() {
+  try {
+    const priceResponse = await fetch('https://prices.zackco.com/prices?code=turtle-2')
+    const priceData = await priceResponse.json()
+    if (priceData.value && priceData.decimal) {
+      turtleUsdPrice.value = parseFloat(priceData.value) / Math.pow(10, priceData.decimal)
+    }
+  }
+  catch (e) {
+    console.error('Failed to fetch TURTLE price:', e)
+  }
+}
+
 async function loadVaultData() {
   try {
     const config = useRuntimeConfig()
@@ -417,6 +444,8 @@ async function loadVaultData() {
     if (contractData.last_fetch) {
       lastSynced.value = new Date(contractData.last_fetch)
     }
+
+    await fetchTurtlePrice()
 
     const { walletProvider } = useAppKitProvider('eip155')
     const provider = new BrowserProvider(walletProvider)
@@ -653,6 +682,11 @@ watch(eip155Account.value, async (account) => {
 onMounted(async () => {
   renderedMarkdown.value = marked(await $fetch('/content/vault.md'))
   await loadVaultData()
+  priceInterval = setInterval(fetchTurtlePrice, 10000)
+})
+
+onUnmounted(() => {
+  if (priceInterval) clearInterval(priceInterval)
 })
 </script>
 
