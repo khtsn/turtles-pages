@@ -25,7 +25,7 @@ Welcome to TurtleRedemptionVault — your live, on-chain liquidity engine for Tu
 Purchase Turtle NFTs on-site using CRO:
 
 * Launch floor: 288 CRO (20% above CRO mint price)
-* Vault floor after Jan 1, 2016 price increase: 324 CRO (20% above mint price) 
+* Vault floor after Jan 1, 2026 price increase: 324 CRO (20% above mint price) 
 * Post Mint Vault floor: 20%+ above marketplace CRO floor (post mint, adjusted in 24 hrs)
 
 **CRO is used to:**
