@@ -185,6 +185,11 @@ const links = [
     platform: 'VVS FINANCE',
     url: 'https://dexscreener.com/cronos/0x4a03cf442ce4aca39b8e22ad610d8ecf759f491b',
   },
+  {
+    name: 'TURTLE/PACK',
+    platform: 'VVS FINANCE',
+    url: 'https://dexscreener.com/cronos/0x028da3c0e87920fb13b1a4640a3b23fdab323a2e',
+  },
 ]
 </script>
 
