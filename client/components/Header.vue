@@ -136,7 +136,7 @@ const menus = reactive([
     href: '/links',
   },
   {
-    title: 'Buy Turtle',
+    title: 'Buy',
     to: '/buy-turtle',
     href: '/buy-turtle',
   },
@@ -151,22 +151,22 @@ const menus = reactive([
     href: '/partners',
   },
   {
-    title: 'About Us',
+    title: 'About',
     to: '/about',
     href: '/about',
   },
   {
-    title: 'Turtle Whitepaper',
+    title: 'Whitepaper',
     to: '/turtle-paper',
     href: '/turtle-paper',
   },
   {
-    title: 'Mint Turtles NFTs',
+    title: 'Mint NFTs',
     to: '/mint-turtle',
     href: '/mint-turtle',
   },
   {
-    title: 'Earning Turtle',
+    title: 'Earning',
     to: '/earning-turtle',
     href: '/earning-turtle',
   },
@@ -179,6 +179,11 @@ const menus = reactive([
     title: 'Redemption Vault',
     to: '/vault',
     href: '/vault',
+  },
+  {
+    title: 'Bridge',
+    to: '/bridge',
+    href: '/bridge',
   },
 ])
 </script>
