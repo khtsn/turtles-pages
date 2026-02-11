@@ -67,10 +67,56 @@
       </v-alert>
 
       <v-card
-        class="mt-6 bridge-card"
+        class="mt-2 bridge-card"
         elevation="2"
       >
         <v-card-text class="pa-6">
+          <!-- Wrong Network Alert -->
+          <v-alert
+            v-if="eip155Account.isConnected && wrongNetwork"
+            variant="tonal"
+            color="info"
+            density="compact"
+            class="mb-4"
+          >
+            <div class="d-flex align-center justify-space-between">
+              <div class="d-flex align-center">
+                <v-icon
+                  size="16"
+                  class="mr-2"
+                >
+                  mdi-alert
+                </v-icon>
+                <span class="text-caption">Switch to {{ fromChain.name }} network to bridge</span>
+              </div>
+              <v-btn
+                size="small"
+                variant="outlined"
+                @click="switchNetwork"
+              >
+                Switch Network
+              </v-btn>
+            </div>
+          </v-alert>
+
+          <!-- Process Info -->
+          <v-alert
+            v-else-if="eip155Account.isConnected"
+            variant="tonal"
+            color="info"
+            density="compact"
+            class="mb-4 text-caption"
+          >
+            <div class="d-flex align-center">
+              <v-icon
+                size="16"
+                class="mr-2"
+              >
+                mdi-information
+              </v-icon>
+              <span>Requires up to 2 transactions: approval (if needed) + bridge</span>
+            </div>
+          </v-alert>
           <!-- From Chain -->
           <div class="chain-selector mb-4">
             <div class="d-flex align-center justify-space-between pa-4 chain-box">
@@ -101,9 +147,15 @@
             </div>
           </div>
 
-          <!-- Swap Button -->
+          <!-- Direction Arrow with Swap -->
           <div class="text-center my-2">
-            <v-icon>mdi-arrow-down</v-icon>
+            <v-btn
+              icon
+              variant="outlined"
+              @click="swapChains"
+            >
+              <v-icon>mdi-swap-vertical</v-icon>
+            </v-btn>
           </div>
 
           <!-- To Chain -->
@@ -183,27 +235,28 @@
             </v-card-text>
           </v-card>
 
-          <!-- Process Info -->
-          <v-alert
-            v-if="eip155Account.isConnected && fromChain.tokenContract"
-            variant="tonal"
-            color="info"
-            density="compact"
-            class="mb-4 text-caption"
-          >
-            <div class="d-flex align-center">
-              <v-icon
-                size="16"
-                class="mr-2"
-              >
-                mdi-information
-              </v-icon>
-              <span>Requires up to 2 transactions: approval (if needed) + bridge</span>
-            </div>
-          </v-alert>
-
           <v-btn
-            v-if="eip155Account.isConnected"
+            v-if="!eip155Account.isConnected"
+            flat
+            class="custom-button"
+            block
+            size="large"
+            @click="open"
+          >
+            Connect Wallet
+          </v-btn>
+          <v-btn
+            v-else-if="wrongNetwork"
+            flat
+            class="custom-button"
+            block
+            size="large"
+            disabled
+          >
+            Wrong Network
+          </v-btn>
+          <v-btn
+            v-else
             flat
             class="custom-button"
             block
@@ -212,16 +265,6 @@
             @click="bridge"
           >
             Bridge to {{ toChain.name }}
-          </v-btn>
-          <v-btn
-            v-else
-            flat
-            class="custom-button"
-            block
-            size="large"
-            @click="open"
-          >
-            Connect Wallet
           </v-btn>
         </v-card-text>
       </v-card>
@@ -277,7 +320,8 @@
 </template>
 
 <script setup>
-import { useAppKitAccount, useAppKitProvider } from '@reown/appkit/vue'
+import { useAppKitAccount, useAppKitProvider, useAppKitNetwork } from '@reown/appkit/vue'
+import { cronos, mainnet } from '@reown/appkit/networks'
 import { BrowserProvider, Contract, parseEther, formatEther, zeroPadValue } from 'ethers'
 
 // Standard minimal ERC-20 ABI
@@ -296,6 +340,7 @@ const OFT_ABI = [
   'function send(tuple(uint32 dstEid, bytes32 to, uint256 amountLD, uint256 minAmountLD, bytes extraOptions, bytes composeMsg, bytes oftCmd) _sendParam, tuple(uint256 nativeFee, uint256 lzTokenFee) _fee, address _refundAddress) payable returns (tuple(bytes32 guid, tuple(uint256 nativeFee, uint256 lzTokenFee) fee))',
   'function token() view returns (address)',
   'function approvalRequired() view returns (bool)',
+  'function balanceOf(address) view returns (uint256)',
 ]
 
 useHead({
@@ -314,7 +359,7 @@ const CHAINS = {
     nativeToken: 'CRO',
     eid: 30359,
     tokenContract: '0x8C9E2bEf2962CE302ef578113eebEc62920B7e57',
-    contract: '0xd5Fc2B122B9c085cd196d94Bf83F64972371B8Aa', // oft adapter
+    contract: '0xd5Fc2B122B9c085cd196d94Bf83F64972371B8Aa', //  oft adapter
     explorer: 'https://explorer.cronos.org/',
     explorerName: 'Cronos Explorer',
   },
@@ -333,6 +378,7 @@ const CHAINS = {
 const { notifySuccess, notifyError } = useSnackbar()
 const { open } = useContract()
 const eip155Account = useAppKitAccount({ namespace: 'eip155' })
+const networkData = useAppKitNetwork()
 
 const fromChain = ref(CHAINS.cronos)
 const toChain = ref(CHAINS.ethereum)
@@ -343,33 +389,17 @@ const balance = ref('')
 const estimatedFee = ref('')
 const wrongNetwork = ref(false)
 
-let refreshInterval = null
-
 watch(() => eip155Account.value.isConnected, async (connected) => {
   if (connected) {
-    checkNetwork()
+    detectAndSetNetwork()
     await loadStats()
-    // Start auto-refresh every 10 seconds
-    if (refreshInterval) clearInterval(refreshInterval)
-    refreshInterval = setInterval(loadStats, 10000)
-  }
-  else {
-    // Stop auto-refresh when disconnected
-    if (refreshInterval) {
-      clearInterval(refreshInterval)
-      refreshInterval = null
-    }
-  }
-}, { immediate: true })
-
-watch(() => eip155Account.value.chainId, () => {
-  if (eip155Account.value.isConnected) {
-    checkNetwork()
   }
 })
-
-onUnmounted(() => {
-  if (refreshInterval) clearInterval(refreshInterval)
+watch(() => networkData.value.chainId, async (newChainId, oldChainId) => {
+  if (eip155Account.value.isConnected && newChainId !== oldChainId) {
+    detectAndSetNetwork()
+    await loadStats()
+  }
 })
 watch(amount, () => {
   if (amount.value && parseFloat(amount.value) > 0) {
@@ -380,47 +410,60 @@ watch(amount, () => {
   }
 })
 
-const checkNetwork = () => {
-  wrongNetwork.value = eip155Account.value.chainId !== fromChain.value.id
+const detectAndSetNetwork = () => {
+  const chainId = networkData.value.chainId
+  if (chainId === CHAINS.cronos.id) {
+    fromChain.value = CHAINS.cronos
+    toChain.value = CHAINS.ethereum
+    wrongNetwork.value = false
+  }
+  else if (chainId === CHAINS.ethereum.id) {
+    fromChain.value = CHAINS.ethereum
+    toChain.value = CHAINS.cronos
+    wrongNetwork.value = false
+  }
+  else {
+    wrongNetwork.value = true
+  }
 }
 
-const switchNetwork = async () => {
-  try {
-    const { walletProvider } = useAppKitProvider('eip155')
-    await walletProvider.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: `0x${fromChain.value.id.toString(16)}` }],
-    })
-  }
-  catch (err) {
-    notifyError('Failed to switch network')
-  }
-}
-
-const swapChains = () => {
+const swapChains = async () => {
   const temp = fromChain.value
   fromChain.value = toChain.value
   toChain.value = temp
-  balance.value = ''
+  amount.value = ''
   estimatedFee.value = ''
-  if (eip155Account.value.isConnected) {
-    checkNetwork()
-    loadStats()
+
+  if (eip155Account.value.chainId !== fromChain.value.id) {
+    wrongNetwork.value = true
+  }
+  else {
+    wrongNetwork.value = false
   }
 }
 
+const switchNetwork = async () => {
+  const networkData = useAppKitNetwork()
+  networkData.value.switchNetwork(networkData.value.chainId === CHAINS.cronos.id ? mainnet : cronos)
+}
+
 const loadStats = async () => {
+  if (wrongNetwork.value) {
+    balance.value = ''
+    estimatedFee.value = ''
+    return
+  }
   try {
     const { walletProvider } = useAppKitProvider('eip155')
     const provider = new BrowserProvider(walletProvider)
-    const contract = new Contract(fromChain.value.contract, OFT_ABI, provider)
 
     let bal
-    if (fromChain.value.id === 25) {
+    if (fromChain.value.id === CHAINS.cronos.id) {
       const token = new Contract(fromChain.value.tokenContract, ERC20_ABI, provider)
       bal = await token.balanceOf(eip155Account.value.address)
     }
     else {
+      const contract = new Contract(fromChain.value.contract, OFT_ABI, provider)
       bal = await contract.balanceOf(eip155Account.value.address)
     }
 
@@ -461,11 +504,6 @@ const setMaxAmount = () => {
   amount.value = balance.value
 }
 
-const formatAddress = (addr) => {
-  if (!addr) return ''
-  return `${addr.slice(0, 6)}...${addr.slice(-4)}`
-}
-
 const copyAddress = async (addr) => {
   try {
     await navigator.clipboard.writeText(addr)
@@ -477,6 +515,24 @@ const copyAddress = async (addr) => {
 }
 
 const bridge = async () => {
+  if (wrongNetwork.value) {
+    notifyError('Please connect to Cronos or Ethereum network')
+    return
+  }
+
+  const bridgeAmount = parseFloat(amount.value)
+  const userBalance = parseFloat(balance.value)
+
+  if (bridgeAmount <= 0) {
+    notifyError('Amount must be greater than 0')
+    return
+  }
+
+  if (bridgeAmount > userBalance) {
+    notifyError('Insufficient balance')
+    return
+  }
+
   try {
     processing.value = true
     const { walletProvider } = useAppKitProvider('eip155')
@@ -522,7 +578,8 @@ const bridge = async () => {
   catch (err) {
     console.error(err)
     processing.value = false
-    notifyError('Bridge failed. Please try again.')
+    const errorMsg = err.reason || err.message || 'Bridge failed. Please try again.'
+    notifyError(errorMsg)
   }
 }
 </script>
