@@ -21,16 +21,48 @@
       <p class="header-text text-uppercase text-center">
         Bridge Turtle Tokens
       </p>
+      <!-- Contract Addresses -->
+      <v-card
+        class="mt-4"
+        elevation="2"
+      >
+        <v-card-text class="pa-4">
+          <div class="text-caption text-grey mb-3">
+            TURTLE Contract Addresses
+          </div>
+          <div class="d-flex flex-column ga-2">
+            <div
+              v-for="chain in [CHAINS.cronos, CHAINS.ethereum]"
+              :key="chain.id"
+              class="d-flex align-center justify-space-between pa-2"
+            >
+              <div class="d-flex align-center">
+                <v-icon
+                  size="20"
+                  class="mr-2"
+                >
+                  {{ chain.icon }}
+                </v-icon>
+                <span class="text-caption">{{ chain.name }}</span>
+              </div>
+              <div class="d-flex align-center">
+                <span class="text-caption font-mono mr-2">{{ (chain.tokenContract || chain.contract)
+                }}</span>
+                <v-btn
+                  icon="mdi-content-copy"
+                  size="x-small"
+                  variant="text"
+                  @click="copyAddress(chain.tokenContract || chain.contract)"
+                />
+              </div>
+            </div>
+          </div>
+        </v-card-text>
+      </v-card>
       <v-alert
         type="warning"
         prominent
       >
-        <v-icon
-          size="small"
-          class="mr-2"
-        >
-          mdi-information
-        </v-icon>
         Bridge TURTLE tokens only. Native tokens (CRO/ETH) cannot be bridged.
       </v-alert>
 
@@ -146,7 +178,7 @@
               </div>
               <div class="d-flex justify-space-between">
                 <span class="text-caption">Recipient</span>
-                <span class="text-caption font-weight-bold">{{ formatAddress(eip155Account.address) }}</span>
+                <span class="text-caption font-weight-bold">{{ eip155Account.address }}</span>
               </div>
             </v-card-text>
           </v-card>
@@ -282,7 +314,7 @@ const CHAINS = {
     nativeToken: 'CRO',
     eid: 30359,
     tokenContract: '0x8C9E2bEf2962CE302ef578113eebEc62920B7e57',
-    contract: '0xd5Fc2B122B9c085cd196d94Bf83F64972371B8Aa', //oft adapter
+    contract: '0xd5Fc2B122B9c085cd196d94Bf83F64972371B8Aa', // oft adapter
     explorer: 'https://explorer.cronos.org/',
     explorerName: 'Cronos Explorer',
   },
@@ -292,7 +324,7 @@ const CHAINS = {
     icon: 'mdi-ethereum',
     nativeToken: 'ETH',
     eid: 30101,
-    contract: '0x911eb8e70D2bFf89c16Df04aF557c4De546838dF', //oft
+    contract: '0x911eb8e70D2bFf89c16Df04aF557c4De546838dF', // oft
     explorer: 'https://etherscan.io',
     explorerName: 'Etherscan',
   },
@@ -432,6 +464,16 @@ const setMaxAmount = () => {
 const formatAddress = (addr) => {
   if (!addr) return ''
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`
+}
+
+const copyAddress = async (addr) => {
+  try {
+    await navigator.clipboard.writeText(addr)
+    notifySuccess('Address copied to clipboard')
+  }
+  catch (err) {
+    notifyError('Failed to copy address')
+  }
 }
 
 const bridge = async () => {
