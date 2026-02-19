@@ -315,6 +315,102 @@
           </div>
         </v-card-text>
       </v-card>
+
+      <!-- wTURTLE Information -->
+      <v-card
+        class="mt-6"
+        elevation="2"
+      >
+        <v-card-text class="pa-6">
+          <div class="text-h5 font-weight-bold mb-4">
+            $wTURTLE on Ethereum – Official Bridged Integration with CamelsNFT
+          </div>
+
+          <p class="mb-3">
+            <strong>$wTURTLE</strong> (Ethereum contract: <code class="text-primary">0x911eb8e70D2bFf89c16Df04aF557c4De546838dF</code>) is the <strong>official bridged equivalent</strong> of $TURTLE from Cronos (contract: <code class="text-primary">0x8c9e2bef2962ce302ef578113eebec62920b7e57</code>).
+          </p>
+
+          <p class="mb-4">
+            The full supply was donated by the Turtle on Cronos community, CamelsNFT, and users. It is now live on Ethereum to power real, permanent utility inside the <strong>CamelsNFT</strong> ecosystem (OG Camels + 3D Camels, 16,000 total supply).
+          </p>
+
+          <div class="text-h6 font-weight-bold mb-3">
+            Core Utility – Two Immutable Contracts
+          </div>
+          <p class="text-caption text-grey mb-3">
+            (Live on Cronos via our project websites for months, now expanding to Ethereum + full OG + 3D Camels support)
+          </p>
+
+          <div class="mb-4">
+            <div class="text-subtitle-1 font-weight-bold mb-2">
+              🐢 Camels Liquidity Vault (CLC)
+            </div>
+            <ul class="text-body-2">
+              <li>Swap <strong>any Camel or 3D Camel</strong> in the vault 1:1 for a small $wTURTLE fee (100% of fees go back into the pool).</li>
+              <li>Deposit/forfeit any Camel or 3D Camel → redeem your share of the $wTURTLE pool.</li>
+              <li>Buy any Camel or 3D Camel from the vault with $ETH (price always starts at 0.03 ETH and stays <strong>20% above</strong> the highest floor of both collections — up-only forever).</li>
+              <li><strong>Initially, all $ETH purchase proceeds are burned directly into $wTURTLE liquidity</strong> on Uniswap V2.</li>
+              <li>0.01 ETH from every 3D Camel mint also goes toward building &amp; burning more $wTURTLE liquidity.</li>
+              <li><strong>$wTURTLE is permanently locked to NFTs forever</strong> — nobody (including the team) can withdraw any NFTs or $wTURTLE.</li>
+              <li>Fed forever by enforced 7.5% royalties (3.75% to the pool) + mint funds.</li>
+              <li>Only editable functions: withdraw $ETH, adjust purchase price, or swap fee.</li>
+              <li>Fully immutable and on-chain for life.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <div class="text-subtitle-1 font-weight-bold mb-2">
+              🐢 Camels Earning Contract
+            </div>
+            <ul class="text-body-2">
+              <li>Soft-stake any Camel or 3D Camel + hard-stake $wTURTLE → earn $wTURTLE rewards daily.</li>
+              <li>Immutable: $wTURTLE cannot be withdrawn except through staked NFTs.</li>
+              <li>Proven on Cronos for months — now live on Ethereum with full OG + 3D Camel support.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <div class="text-h6 font-weight-bold mb-2">
+              Liquidity &amp; Growth
+            </div>
+            <ul class="text-body-2">
+              <li>First batch of $ETH liquidity already added and burned by CamelsNFT (≈24.3% of the Uniswap V2 pool is permanently burned).</li>
+              <li>More $ETH will be burned into the pool with every new mint, Liquidity Vault purchase, and contract payment.</li>
+              <li>Live pair: <a href="https://dexscreener.com/ethereum/0x95bd1b5518e739bbc1b84e532e734b09e177ebcd" target="_blank" class="text-primary">https://dexscreener.com/ethereum/0x95bd1b5518e739bbc1b84e532e734b09e177ebcd</a></li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <div class="text-h6 font-weight-bold mb-2">
+              Why the Bridge Exists
+            </div>
+            <p class="text-body-2">
+              We bridged $TURTLE to Ethereum under the $wTURTLE ticker to give the original Cronos memecoin <strong>real, lasting utility</strong> while making it easier for the wider Ethereum community to support a Cronos Layer-1 project.
+            </p>
+            <p class="text-body-2">
+              Everything is built <strong>non-profit, organically, and immutable</strong> — slow and steady, turtle style 🐢🐫
+            </p>
+          </div>
+
+          <v-divider class="my-4" />
+
+          <div class="text-body-2 mb-3">
+            <strong>Official $wTURTLE CA on ETH:</strong><br>
+            <code class="text-primary">0x911eb8e70D2bFf89c16Df04aF557c4De546838dF</code>
+          </div>
+
+          <p class="text-body-2 mb-3">
+            Use the bridge on this page to move $TURTLE from Cronos → $wTURTLE on Ethereum. (Bridges also live at turtleoncro.com/bridge and camelsnft.io/bridge)
+          </p>
+
+          <div class="text-body-2">
+            <strong>Follow the journey:</strong><br>
+            @Cryptodaave • @TurtleonCro • @CamelsNFT<br>
+            <a href="https://camelsnft.io/" target="_blank" class="text-primary">https://camelsnft.io/</a><br>
+            <a href="https://turtleoncro.com/" target="_blank" class="text-primary">https://turtleoncro.com/</a>
+          </div>
+        </v-card-text>
+      </v-card>
     </v-container>
   </div>
 </template>
