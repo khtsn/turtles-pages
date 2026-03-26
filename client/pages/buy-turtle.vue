@@ -275,21 +275,6 @@ const cronosSteps = [
       { type: 'text', text: 'Use any Cronos DEX or the built-in aggregator in the Onchain Wallet to swap into $TURTLE.' },
     ],
   },
-  {
-    number: '05',
-    title: 'Preferred DEXes (highest liquidity first)',
-    content: [
-      { type: 'text', text: 'VVS Finance is the recommended venue, followed by several other Cronos trading options.' },
-    ],
-    links: [
-      { label: 'VVS Finance', href: 'https://vvs.finance' },
-      { label: 'Ebisus Bay', href: 'https://ebisusbay.com' },
-      { label: 'Obsidian Finance', href: 'https://obsidian.finance' },
-      { label: 'DooSwap', href: 'https://swap.doonft.com' },
-      { label: 'WolfSwap', href: 'https://wolfswap.app' },
-      { label: 'CronaSwap', href: 'https://cronaswap.org' },
-    ],
-  },
 ]
 
 const ethereumOptions = [
@@ -336,6 +321,7 @@ const quickLinkGroups = [
         label: 'WolfSwap',
         href: 'https://wolfswap.app/swap?chainId=25&sellToken=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&buyToken=0x8c9e2bef2962ce302ef578113eebec62920b7e57',
       },
+      { label: 'DooSwap', href: 'https://swap.doonft.com' },
     ],
   },
   {
